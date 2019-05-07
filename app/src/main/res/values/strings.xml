@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+
+    <!-- main activity tab layout tabs titles-->
+    <string name="cats_tab_title">Categories</string>
+    <string name="products_tab_title">Proudcts</string>
+    <string name="cat_adding_status_message">Please wait, the category is being added.</string>
+    <string name="product_adding_status_message">Please wait, the product is being added.</string>
+</resources>
