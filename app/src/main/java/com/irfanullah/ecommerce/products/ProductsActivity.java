@@ -1,6 +1,7 @@
 package com.irfanullah.ecommerce.products;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ProgressBar;
 
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.R;
+import com.irfanullah.ecommerce.addproduct.AddProductActivity;
 import com.irfanullah.ecommerce.products.Adapter.ProductsAdapter;
 import com.irfanullah.ecommerce.products.Logic.ProductsLogic;
 import com.irfanullah.ecommerce.products.Logic.ProductsPresenter;
@@ -24,6 +26,7 @@ public class ProductsActivity extends AppCompatActivity implements ProductsLogic
     private Context context;
     private ProductsAdapter productsAdapter;
     private FloatingActionButton addProductBtn;
+    private String CAT_ID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class ProductsActivity extends AppCompatActivity implements ProductsLogic
 
     private void initObjects() {
         context = this;
+        CAT_ID = getIntent().getExtras().getString("cat_id");
         presenter = new ProductsPresenter(context,this);
 
         rv = findViewById(R.id.productsRV);
@@ -72,6 +76,8 @@ public class ProductsActivity extends AppCompatActivity implements ProductsLogic
     }
 
     private void gotoAddProductActivity(){
-
+        Intent productAct = new Intent(context, AddProductActivity.class);
+        productAct.putExtra("cat_id",CAT_ID);
+        startActivity(productAct);
     }
 }

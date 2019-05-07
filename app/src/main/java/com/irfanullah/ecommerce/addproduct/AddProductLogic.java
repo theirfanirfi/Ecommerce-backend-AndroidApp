@@ -1,5 +1,7 @@
 package com.irfanullah.ecommerce.addproduct;
 
+import android.net.Uri;
+
 public interface AddProductLogic {
     interface View {
 
@@ -10,6 +12,6 @@ public interface AddProductLogic {
     }
 
     interface Preseneter {
-        void validateInputFieldsAndMakeProductAddRequest();
+        void validateInputFieldsAndMakeProductAddRequest(String name, String quantity, String cat_id, Uri image_uri);
     }
 }

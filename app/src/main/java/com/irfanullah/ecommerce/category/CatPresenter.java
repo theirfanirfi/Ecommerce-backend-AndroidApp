@@ -66,7 +66,7 @@ public class CatPresenter implements CatLogic.Presenter {
         SC.logHere(path);
         File file = new File(path);
 
-        RequestBody tokenBody = RequestBody.create(MediaType.parse("multipart/form-data"),"33");
+        RequestBody tokenBody = RequestBody.create(MediaType.parse("multipart/form-data"),Pref.getUser(context).getTOKEN());
         RequestBody title = RequestBody.create(MediaType.parse("multipart/form-data"),cat_title);
         RequestBody img = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part image = MultipartBody.Part.createFormData("image",file.getName(),img);

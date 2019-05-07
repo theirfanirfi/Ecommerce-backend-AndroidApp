@@ -2,6 +2,7 @@ package com.irfanullah.ecommerce.APIs;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Models.Category;
+import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Models.User;
 
 import okhttp3.MultipartBody;
@@ -28,4 +29,10 @@ public interface APIs {
 
     @GET(BASE_URL+"auth/getCategories")
     Call<Category> loadCategories(@Query("token") String token);
+
+    @POST(BASE_URL+"auth/addproduct")
+    @Multipart
+    Call<Product> addProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
+                             @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
+                             );
 }

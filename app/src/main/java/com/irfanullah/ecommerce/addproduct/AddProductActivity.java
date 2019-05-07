@@ -1,6 +1,9 @@
 package com.irfanullah.ecommerce.addproduct;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.TextView;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.R;
 
+import java.net.URI;
+
 public class AddProductActivity extends AppCompatActivity implements AddProductLogic.View {
 
     private EditText product_name,product_quantity;
@@ -21,6 +26,10 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
     private ProgressBar progressBar;
     private TextView statusTextView;
     private Context context;
+    private AddProductPresenter presenter;
+    private int PICK_IMAGE = 346;
+    private Uri image_uri;
+    private String CAT_ID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,7 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
 
     private void initObjects(){
         context = this;
+        CAT_ID = getIntent().getExtras().getString("cat_id");
         product_name = findViewById(R.id.product_name);
         product_quantity = findViewById(R.id.productQuantity);
         product_image_view = findViewById(R.id.product_img);
@@ -39,6 +49,23 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);
         getSupportActionBar().setTitle("Add Product");
+        presenter = new AddProductPresenter(context,this);
+
+        chooseImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseProductImage();
+            }
+        });
+
+        addProductBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri);
+            }
+        });
+
+
     }
 
     @Override
@@ -64,5 +91,27 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
         statusTextView.setVisibility(View.GONE);
+    }
+
+    private void chooseProductImage(){
+        Intent createChooser = new Intent();
+        createChooser.setType("image/*");
+        createChooser.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(createChooser, "Select Picture"), PICK_IMAGE);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE && resultCode == RESULT_OK){
+            image_uri = data.getData();
+            product_image_view.setImageURI(image_uri);
+            makeImageViewVisible();
+        }
+    }
+
+    private void makeImageViewVisible(){
+        product_image_view.setVisibility(View.VISIBLE);
     }
 }

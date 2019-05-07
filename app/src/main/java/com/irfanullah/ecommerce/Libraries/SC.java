@@ -25,16 +25,6 @@ public class SC {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? true : false;
     }
 
-    public static String getRealPathFromURIPath(Uri contentURI, Context activity) {
-        Cursor cursor = activity.getContentResolver().query(contentURI, null, null, null, null);
-        if (cursor == null) {
-            return contentURI.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            return cursor.getString(idx);
-        }
-    }
 
     public static void iLogHere(int n){
         Log.i(TAG,Integer.toString(n));
@@ -42,5 +32,21 @@ public class SC {
 
     public static void logHere(String message){
         Log.i(TAG,message);
+    }
+
+    public static String getRealPathFromURIPath(Uri contentURI, Context activity) {
+        String path = null;
+        if (Build.VERSION.SDK_INT < 11)
+            path = Util.getRealPathFromURI_BelowAPI11(activity, contentURI);
+
+            // SDK >= 11 && SDK < 19
+        else if (Build.VERSION.SDK_INT < 19)
+            path = Util.getRealPathFromURI_API11to18(activity, contentURI);
+
+            // SDK > 19 (Android 4.4)
+        else
+            path = Util.getRealPathFromURI_API19(activity, contentURI);
+        return path;
+        //  File file = new File(path);
     }
 }
