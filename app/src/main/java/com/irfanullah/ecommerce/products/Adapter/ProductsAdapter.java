@@ -53,16 +53,39 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         private ImageView product_image;
         private TextView product_name,quantity;
 
-        public ProductView(@NonNull View itemView,ProductClickListener productClickListener) {
+        public ProductView(@NonNull View itemView, final ProductClickListener productClickListener) {
             super(itemView);
             product_image = itemView.findViewById(R.id.product_img);
             product_name = itemView.findViewById(R.id.product_name);
             quantity = itemView.findViewById(R.id.quantityAndSold);
+
+            product_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    productClickListener.onProductClicked(getAdapterPosition(),products.get(getAdapterPosition()));
+                }
+            });
+
+            product_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    productClickListener.onProductClicked(getAdapterPosition(),products.get(getAdapterPosition()));
+                }
+            });
+
+            product_image.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    productClickListener.onProductLongClicked(getAdapterPosition(),products.get(getAdapterPosition()));
+                    return true;
+                }
+            });
         }
     }
 
     public void notifyAdapter(ArrayList<Product> pds){
         products = pds;
+        notifyDataSetChanged();
     }
 
     public void setOnProductClickListern(ProductClickListener productClickListener){
@@ -71,5 +94,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     public interface ProductClickListener {
         void onProductClicked(int position,Product product);
+        void onProductLongClicked(int position,Product product);
     }
 }

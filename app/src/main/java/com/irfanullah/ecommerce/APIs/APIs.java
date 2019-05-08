@@ -30,9 +30,18 @@ public interface APIs {
     @GET(BASE_URL+"auth/getCategories")
     Call<Category> loadCategories(@Query("token") String token);
 
+    @GET(BASE_URL+"auth/getproducts")
+    Call<Product> getProducts(@Query("token") String token);
+
+    @GET(BASE_URL+"auth/getproduct")
+    Call<Product> getProduct(@Query("token") String token, @Query("product_id") String product_id);
+
+    @GET(BASE_URL+"auth/deleteproduct")
+    Call<Product> deleteProduct(@Query("token") String token, @Query("product_id") String product_id);
+
     @POST(BASE_URL+"auth/addproduct")
     @Multipart
     Call<Product> addProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
-                             @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
+                            @Part("product_price") RequestBody price, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
                              );
 }

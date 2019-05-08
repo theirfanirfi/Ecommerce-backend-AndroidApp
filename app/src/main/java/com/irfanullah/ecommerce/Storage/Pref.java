@@ -10,6 +10,8 @@ import com.irfanullah.ecommerce.Models.User;
 public class Pref {
     public static String PREF_FILE_NAME = "ecom_panel_file";
     public static String PREF_USER_DETAILS = "user";
+    public static String IS_PRODUCT_DELETED = "is_product_deleted";
+   // public static String DELETED_PRODUCT_ID = "";
     private static SharedPreferences sharedPreferences;
 
     public static SharedPreferences getSharedPreference(Context context){

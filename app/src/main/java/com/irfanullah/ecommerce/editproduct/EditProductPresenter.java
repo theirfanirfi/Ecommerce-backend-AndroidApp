@@ -1,4 +1,4 @@
-package com.irfanullah.ecommerce.addproduct;
+package com.irfanullah.ecommerce.editproduct;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,6 +7,7 @@ import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Storage.Pref;
+import com.irfanullah.ecommerce.addproduct.AddProductLogic;
 
 import java.io.File;
 
@@ -17,11 +18,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddProductPresenter implements AddProductLogic.Preseneter {
+public class EditProductPresenter implements AddProductLogic.Preseneter {
     private Context context;
     private AddProductLogic.View view;
 
-    public AddProductPresenter(Context context, AddProductLogic.View view) {
+    public EditProductPresenter(Context context, AddProductLogic.View view) {
         this.context = context;
         this.view = view;
     }

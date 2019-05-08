@@ -2,6 +2,8 @@ package com.irfanullah.ecommerce.Models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class Product {
     @SerializedName("product_id") private String PRODUCT_ID;
     @SerializedName("quantity") private String PRODUCT_QUANTITY;
@@ -11,12 +13,32 @@ public class Product {
     @SerializedName("product_image") private String PRODUCT_IMAGE;
     @SerializedName("created_at") private String CREATED_AT;
     @SerializedName("cat_id") private String CAT_ID;
+    @SerializedName("product_price") private String PRODUCT_PRICE;
     @SerializedName("isFound") private boolean isFound;
     @SerializedName("isError") private boolean isError;
     @SerializedName("isSaved") private boolean isSaved;
     @SerializedName("isUploaded") private boolean isUploaded;
     @SerializedName("message") private String Message;
     @SerializedName("isAuthenticated") private boolean isAuthenticated;
+    @SerializedName("isDeleted") private boolean isDeleted;
+    @SerializedName("products") private ArrayList<Product> PRODUCTS;
+    @SerializedName("product") private Product PRODUCT;
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public Product getPRODUCT() {
+        return PRODUCT;
+    }
+
+    public String getPRODUCT_PRICE() {
+        return PRODUCT_PRICE;
+    }
+
+    public ArrayList<Product> getPRODUCTS() {
+        return PRODUCTS;
+    }
 
     public String getPRODUCT_QUANTITY() {
         return PRODUCT_QUANTITY;

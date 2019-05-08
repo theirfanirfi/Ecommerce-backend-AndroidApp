@@ -1,11 +1,11 @@
-package com.irfanullah.ecommerce.addproduct;
+package com.irfanullah.ecommerce.editproduct;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.R;
+import com.irfanullah.ecommerce.addproduct.AddProductLogic;
+import com.irfanullah.ecommerce.addproduct.AddProductPresenter;
 
-import java.net.URI;
-
-public class AddProductActivity extends AppCompatActivity implements AddProductLogic.View {
+public class EditProductActivity extends AppCompatActivity implements AddProductLogic.View {
 
     private EditText product_name,product_quantity, product_price;
     private ImageView product_image_view;

@@ -2,15 +2,19 @@ package com.irfanullah.ecommerce.products;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.R;
+import com.irfanullah.ecommerce.Storage.Pref;
 import com.irfanullah.ecommerce.addproduct.AddProductActivity;
 import com.irfanullah.ecommerce.products.Adapter.ProductsAdapter;
 import com.irfanullah.ecommerce.products.Logic.ProductsLogic;
@@ -25,6 +29,7 @@ public class ProductsActivity extends AppCompatActivity implements ProductsLogic
     private ProductsPresenter presenter;
     private Context context;
     private ProductsAdapter productsAdapter;
+    private ArrayList<Product> products;
     private FloatingActionButton addProductBtn;
     private String CAT_ID = "";
 
@@ -53,16 +58,19 @@ public class ProductsActivity extends AppCompatActivity implements ProductsLogic
             }
         });
 
+        presenter.getProductsRequest();
+
     }
 
     @Override
     public void onProductsLoaded(ArrayList<Product> products) {
+        this.products = products;
         productsAdapter.notifyAdapter(products);
     }
 
     @Override
     public void onError(String message) {
-
+        SC.toastHere(context,message);
     }
 
     @Override
@@ -79,5 +87,30 @@ public class ProductsActivity extends AppCompatActivity implements ProductsLogic
         Intent productAct = new Intent(context, AddProductActivity.class);
         productAct.putExtra("cat_id",CAT_ID);
         startActivity(productAct);
+    }
+
+
+
+    @Override
+    public void onProductDeleted(int position) {
+        SC.iLogHere(products.size());
+        products.remove(position);
+        SC.iLogHere(products.size());
+        productsAdapter.notifyAdapter(products);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

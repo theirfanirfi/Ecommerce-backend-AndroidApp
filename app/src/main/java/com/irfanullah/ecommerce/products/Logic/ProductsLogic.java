@@ -13,10 +13,12 @@ public interface ProductsLogic {
         void onError(String message);
         void showProgressBar();
         void hideProgressBar();
+        void onProductDeleted(int position);
     }
 
     interface Presenter {
         ProductsAdapter setUpProductsRV(RecyclerView rv);
         void getProductsRequest();
+        void deleteProduct(int position,String product_id);
     }
 }
