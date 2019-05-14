@@ -2,6 +2,7 @@ package com.irfanullah.ecommerce.APIs;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Models.Category;
+import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Models.User;
 
@@ -38,6 +39,12 @@ public interface APIs {
 
     @GET(BASE_URL+"auth/deleteproduct")
     Call<Product> deleteProduct(@Query("token") String token, @Query("product_id") String product_id);
+
+    @GET(BASE_URL+"auth/getneworders")
+    Call<Order> getNewOrders(@Query("token") String token);
+
+    @GET(BASE_URL+"auth/getoldorders")
+    Call<Order> getOldOrders(@Query("token") String token);
 
     @POST(BASE_URL+"auth/addproduct")
     @Multipart

@@ -40,6 +40,8 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
     @Override
     public void setUpTabsTitle(TabLayout tabLayout) {
         tabLayout.getTabAt(0).setText("Categories");
+        tabLayout.getTabAt(1).setText("New Orders");
+        tabLayout.getTabAt(2).setText("Processed Orders");
     }
 
 }

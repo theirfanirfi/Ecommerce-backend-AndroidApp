@@ -4,6 +4,8 @@
     <!-- main activity tab layout tabs titles-->
     <string name="cats_tab_title">Categories</string>
     <string name="products_tab_title">Proudcts</string>
+    <string name="new_orders_tab_title">New orders</string>
+    <string name="entertained_orders_tab_title">Entertained orders</string>
     <string name="cat_adding_status_message">Please wait, the category is being added.</string>
     <string name="product_adding_status_message">Please wait, the product is being added.</string>
 </resources>

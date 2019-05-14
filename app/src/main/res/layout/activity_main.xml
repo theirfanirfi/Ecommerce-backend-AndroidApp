@@ -15,6 +15,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        app:tabMode="scrollable"
+        app:tabGravity="center"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +27,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cats_tab_title" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/new_orders_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_orders_tab_title" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/entertained_orders_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/entertained_orders_tab_title" />
 
     </android.support.design.widget.TabLayout>
 
