@@ -11,6 +11,7 @@ import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Storage.Pref;
+import com.irfanullah.ecommerce.editproduct.EditProductActivity;
 import com.irfanullah.ecommerce.product.ProductActivity;
 import com.irfanullah.ecommerce.products.Adapter.ProductsAdapter;
 
@@ -106,7 +107,10 @@ public class ProductsPresenter implements ProductsLogic.Presenter, ProductsAdapt
                 .setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent editProduct = new Intent(context, EditProductActivity.class);
+                        editProduct.putExtra("product_id",product.getPRODUCT_ID());
+                        editProduct.putExtra("cat_id",product.getCAT_ID());
+                        context.startActivity(editProduct);
                     }
                 })
 

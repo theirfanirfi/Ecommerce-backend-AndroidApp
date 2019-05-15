@@ -21,6 +21,10 @@
         <activity
             android:name=".addproduct.AddProductActivity"
             android:parentActivityName=".products.ProductsActivity" />
+
+        <activity
+            android:name=".editproduct.EditProductActivity"
+            android:parentActivityName=".products.ProductsActivity" />
         <activity
             android:name=".products.ProductsActivity"
             android:parentActivityName=".main.MainActivity" />

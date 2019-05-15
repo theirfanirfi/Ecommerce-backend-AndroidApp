@@ -13,12 +13,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.irfanullah.ecommerce.Libraries.Glib;
 import com.irfanullah.ecommerce.Libraries.SC;
+import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.R;
 import com.irfanullah.ecommerce.addproduct.AddProductLogic;
 import com.irfanullah.ecommerce.addproduct.AddProductPresenter;
 
-public class EditProductActivity extends AppCompatActivity implements AddProductLogic.View {
+public class EditProductActivity extends AppCompatActivity implements EditProductLogic.View {
 
     private EditText product_name,product_quantity, product_price;
     private ImageView product_image_view;
@@ -26,10 +28,12 @@ public class EditProductActivity extends AppCompatActivity implements AddProduct
     private ProgressBar progressBar;
     private TextView statusTextView;
     private Context context;
-    private AddProductPresenter presenter;
+    private EditProductPresenter presenter;
     private int PICK_IMAGE = 346;
     private Uri image_uri;
     private String CAT_ID = "";
+    private String PRODUCT_ID = "";
+    private boolean hasImage = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +45,19 @@ public class EditProductActivity extends AppCompatActivity implements AddProduct
     private void initObjects(){
         context = this;
         CAT_ID = getIntent().getExtras().getString("cat_id");
+        PRODUCT_ID = getIntent().getExtras().getString("product_id");
         product_name = findViewById(R.id.product_name);
         product_quantity = findViewById(R.id.productQuantity);
         product_price = findViewById(R.id.productPrice);
         product_image_view = findViewById(R.id.product_img);
         chooseImageBtn = findViewById(R.id.chooseProductImageBtn);
         addProductBtn = findViewById(R.id.addProductBtn);
+        addProductBtn.setText("Update Product");
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);
-        getSupportActionBar().setTitle("Add Product");
-        presenter = new AddProductPresenter(context,this);
-
+        getSupportActionBar().setTitle("Update Product");
+        presenter = new EditProductPresenter(context,this,PRODUCT_ID);
+        presenter.loadProductData();
         chooseImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +68,7 @@ public class EditProductActivity extends AppCompatActivity implements AddProduct
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_price.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri);
+                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_price.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri,hasImage);
             }
         });
 
@@ -70,11 +76,11 @@ public class EditProductActivity extends AppCompatActivity implements AddProduct
     }
 
     @Override
-    public void onProductAdded() {
-        product_image_view.setVisibility(View.GONE);
-        product_name.setText("");
-        product_quantity.setText("");
-        product_price.setText("");
+    public void onProductUpdated() {
+       // product_image_view.setVisibility(View.GONE);
+      //  product_name.setText("");
+//        product_quantity.setText("");
+//        product_price.setText("");
         SC.toastHere(context,"Product Added.");
     }
 
@@ -95,6 +101,15 @@ public class EditProductActivity extends AppCompatActivity implements AddProduct
         statusTextView.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onProudctLoaded(Product product) {
+        product_name.setText(product.getPRODUCT_NAME());
+        product_price.setText(product.getPRODUCT_PRICE());
+        product_quantity.setText(product.getPRODUCT_QUANTITY());
+        Glib.loadImage(context,product.getPRODUCT_IMAGE()).into(product_image_view);
+        product_image_view.setVisibility(View.VISIBLE);
+    }
+
     private void chooseProductImage(){
         Intent createChooser = new Intent();
         createChooser.setType("image/*");
@@ -109,6 +124,7 @@ public class EditProductActivity extends AppCompatActivity implements AddProduct
         if(requestCode == PICK_IMAGE && resultCode == RESULT_OK){
             image_uri = data.getData();
             product_image_view.setImageURI(image_uri);
+            hasImage = true;
             makeImageViewVisible();
         }
     }

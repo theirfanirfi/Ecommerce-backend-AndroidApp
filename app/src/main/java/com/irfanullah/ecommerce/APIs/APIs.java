@@ -60,4 +60,15 @@ public interface APIs {
     Call<Product> addProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
                             @Part("product_price") RequestBody price, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
                              );
+
+    @POST(BASE_URL+"auth/updateproduct")
+    @Multipart
+    Call<Product> updateProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
+                             @Part("product_price") RequestBody price,@Part("product_id") RequestBody product_id, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
+    );
+
+    @POST(BASE_URL+"auth/updateproduct")
+    @FormUrlEncoded
+    Call<Product> updateProductWithOutImage(@Field("token") String token, @Field("product_name") String product_name, @Field("product_quantity") String quantity,
+                                @Field("product_price") String price,@Field("product_id") String product_id, @Field("cat_id") String cat_id);
 }
