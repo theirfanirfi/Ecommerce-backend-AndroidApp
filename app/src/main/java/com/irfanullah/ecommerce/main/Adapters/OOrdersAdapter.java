@@ -65,6 +65,7 @@ public class OOrdersAdapter extends RecyclerView.Adapter<OOrdersAdapter.OrderVie
             price = itemView.findViewById(R.id.productPrice);
 
             processOrderBtn = itemView.findViewById(R.id.proOrderBtn);
+            processOrderBtn.setVisibility(View.GONE);
             constraintLayout = itemView.findViewById(R.id.constraintLayout);
 
             clickListeners();

@@ -20,6 +20,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
     public static Context context;
     public static ArrayList<Order> orders;
     public static OrderClickListener orderClickListener;
+    public static ShipOrderClickListener shipOrderClickListener;
 
     public OrdersAdapter(Context ctx,ArrayList<Order> odrs) {
         context = ctx;
@@ -107,15 +108,30 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
                     orderClickListener.onOrderClick(position,order);
                 }
             });
+
+            processOrderBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Order order = orders.get(position);
+                    shipOrderClickListener.onOrderShipClicked(position,order);
+                }
+            });
         }
     }
 
     public interface OrderClickListener {
         void onOrderClick(int position, Order order);
     }
+    public interface ShipOrderClickListener {
+        void onOrderShipClicked(int position, Order order);
+    }
 
     public void setOnOrderClickListener(OrderClickListener onOrderClickListener){
         orderClickListener = onOrderClickListener;
+    }
+    public void setOnShipOrderClickListener(ShipOrderClickListener onShipOrderClickListener){
+        shipOrderClickListener = onShipOrderClickListener;
     }
 
     public void notifyAdapter(ArrayList<Order> or){

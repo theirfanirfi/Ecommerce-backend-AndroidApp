@@ -1,6 +1,7 @@
 package com.irfanullah.ecommerce.main.Fragments.OlderOrdersFrag;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import com.irfanullah.ecommerce.Storage.Pref;
 import com.irfanullah.ecommerce.main.Adapters.OOrdersAdapter;
 import com.irfanullah.ecommerce.main.Adapters.OrdersAdapter;
 import com.irfanullah.ecommerce.main.MainActivityLogic;
+import com.irfanullah.ecommerce.order.OrderActivity;
 
 import java.util.ArrayList;
 
@@ -80,6 +82,9 @@ public class OOrdersPresenter implements MainActivityLogic.OOrdersPresenter, OOr
 
     @Override
     public void onOrderClick(int position, Order order) {
-        view.showToast(order.getQUANTITY());
+        Intent orderAct = new Intent(context, OrderActivity.class);
+        orderAct.putExtra("checkout_id",order.getCHECKOUT_ID());
+        orderAct.putExtra("is_processed",order.getIS_PROCESSED());
+        context.startActivity(orderAct);
     }
 }

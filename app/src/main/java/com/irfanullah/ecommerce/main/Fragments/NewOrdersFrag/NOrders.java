@@ -77,4 +77,11 @@ public class NOrders extends Fragment implements MainActivityLogic.NewOrdersView
             presenter.makeOrdersRequest();
         }
     }
+
+    @Override
+    public void onOrderShipped() {
+        ordersAdapter = presenter.setUpRV(rv);
+        presenter.makeOrdersRequest();
+        SC.toastHere(context,"Order is shipped");
+    }
 }

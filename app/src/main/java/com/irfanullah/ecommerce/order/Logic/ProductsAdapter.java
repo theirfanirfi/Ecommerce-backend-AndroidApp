@@ -10,16 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.irfanullah.ecommerce.Libraries.Glib;
+import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.R;
 
 import java.util.ArrayList;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductView> {
-    private static ArrayList<Product> products;
+    private static ArrayList<Order> products;
     private static Context context;
     ProductClickListener productClickListener;
-    public ProductsAdapter(ArrayList<Product> products, Context context) {
+    public ProductsAdapter(ArrayList<Order> products, Context context) {
         this.products = products;
         this.context = context;
     }
@@ -33,10 +34,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull ProductView productView, int i) {
-        Product product = products.get(i);
+        Order product = products.get(i);
 
         productView.product_name.setText(product.getPRODUCT_NAME());
-        productView.quantityPrice.setText(product.getQUANTITY_ORDERED()+" * "+product.getPRODUCT_PRICE());
+        productView.quantityPrice.setText(product.getQUANTITY_ORDERED()+" * $"+product.getPRODUCT_PRICE());
 
         if(!product.getPRODUCT_IMAGE().isEmpty()){
             Glib.loadImage(context,product.getPRODUCT_IMAGE()).into(productView.product_image);
@@ -59,24 +60,24 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             product_name = itemView.findViewById(R.id.product_name);
             quantityPrice = itemView.findViewById(R.id.productPrice);
 
-            product_name.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    productClickListener.onProductClicked(getAdapterPosition(),products.get(getAdapterPosition()));
-                }
-            });
-
-            product_image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    productClickListener.onProductClicked(getAdapterPosition(),products.get(getAdapterPosition()));
-                }
-            });
+//            product_name.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    productClickListener.onProductClicked(getAdapterPosition(),products.get(getAdapterPosition()));
+//                }
+//            });
+//
+//            product_image.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    productClickListener.onProductClicked(getAdapterPosition(),products.get(getAdapterPosition()));
+//                }
+//            });
 
         }
     }
 
-    public void notifyAdapter(ArrayList<Product> pds){
+    public void notifyAdapter(ArrayList<Order> pds){
         products = pds;
         notifyDataSetChanged();
     }

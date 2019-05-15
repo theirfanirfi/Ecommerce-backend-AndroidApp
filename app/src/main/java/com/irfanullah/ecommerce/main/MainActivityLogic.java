@@ -30,11 +30,13 @@ public interface MainActivityLogic {
         void showProgress();
         void hideProgress();
         void showToast(String message);
+        void onOrderShipped();
     }
 
     interface NewOrdersPresenter {
         void makeOrdersRequest();
         OrdersAdapter setUpRV(RecyclerView rv);
+        void shipOrder(String CHECKOUT_ID);
     }
 
     interface OOrdersView {

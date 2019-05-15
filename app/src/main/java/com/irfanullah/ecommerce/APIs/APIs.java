@@ -46,6 +46,15 @@ public interface APIs {
     @GET(BASE_URL+"auth/getoldorders")
     Call<Order> getOldOrders(@Query("token") String token);
 
+    @GET(BASE_URL+"auth/getcheckout")
+    Call<Order> getCheckOutOrder(@Query("token") String token,@Query("checkout_id") String checkout_id);
+
+    @GET(BASE_URL+"auth/getorderproducts")
+    Call<Order> getOrderProducts(@Query("token") String token,@Query("checkout_id") String checkout_id);
+
+    @GET(BASE_URL+"auth/shiporder")
+    Call<Order> shipOrder(@Query("token") String token,@Query("checkout_id") String checkout_id);
+
     @POST(BASE_URL+"auth/addproduct")
     @Multipart
     Call<Product> addProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
