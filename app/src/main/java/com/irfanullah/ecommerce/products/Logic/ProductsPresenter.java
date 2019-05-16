@@ -28,9 +28,11 @@ public class ProductsPresenter implements ProductsLogic.Presenter, ProductsAdapt
     private ArrayList<Product> products;
     private ProductsAdapter productsAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    public ProductsPresenter(Context context, ProductsLogic.View view) {
+    private String CAT_ID;
+    public ProductsPresenter(Context context, ProductsLogic.View view,String cat_id) {
         this.context = context;
         this.view = view;
+        this.CAT_ID = cat_id;
     }
 
     @Override
@@ -58,14 +60,14 @@ public class ProductsPresenter implements ProductsLogic.Presenter, ProductsAdapt
 
     private void makeGetProductRequest(){
         view.showProgressBar();
-        RetroLib.getAPIServices().getProducts(Pref.getUser(context).getTOKEN()).enqueue(new Callback<Product>() {
+        RetroLib.getAPIServices().getProducts(Pref.getUser(context).getTOKEN(),CAT_ID).enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 if(response.isSuccessful()){
                     Product product = response.body();
                     if(product.isError() || !product.isAuthenticated()){
                         view.hideProgressBar();
-                        view.onError("Either you are not loggedin or authorized, or error has occurred during the request.");
+                        view.onError(product.getMessage());
                     }else if(product.isFound()){
                         view.hideProgressBar();
                         view.onProductsLoaded(product.getPRODUCTS());

@@ -32,7 +32,7 @@ public interface APIs {
     Call<Category> loadCategories(@Query("token") String token);
 
     @GET(BASE_URL+"auth/getproducts")
-    Call<Product> getProducts(@Query("token") String token);
+    Call<Product> getProducts(@Query("token") String token, @Query("cat_id") String cat_id);
 
     @GET(BASE_URL+"auth/getproduct")
     Call<Product> getProduct(@Query("token") String token, @Query("product_id") String product_id);

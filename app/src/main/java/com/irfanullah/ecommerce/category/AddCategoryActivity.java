@@ -47,6 +47,7 @@ public class AddCategoryActivity extends AppCompatActivity implements CatLogic.V
         cat_image_view = findViewById(R.id.product_img);
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);
+
         addCatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +112,6 @@ public class AddCategoryActivity extends AppCompatActivity implements CatLogic.V
     @Override
     protected void onPause() {
         super.onPause();
-        finish();
+       // finish();
     }
 }

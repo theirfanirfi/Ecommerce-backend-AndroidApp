@@ -1,10 +1,14 @@
 package com.irfanullah.ecommerce.Libraries;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -49,4 +53,6 @@ public class SC {
         return path;
         //  File file = new File(path);
     }
+
+
 }
