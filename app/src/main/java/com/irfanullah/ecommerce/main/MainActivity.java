@@ -14,6 +14,7 @@ import com.irfanullah.ecommerce.R;
 import com.irfanullah.ecommerce.Storage.Pref;
 import com.irfanullah.ecommerce.login.LoginActivity;
 import com.irfanullah.ecommerce.main.Adapters.ViewPagerAdapter;
+import com.irfanullah.ecommerce.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity implements MainActivityLogic.View {
     private MainActPresenter presenter;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityLogic
     @Override
     public void gotoProfileActivity() {
         //not added yet
+        Intent profileAct = new Intent(this, ProfileActivity.class);
+        startActivity(profileAct);
     }
 
     @Override

@@ -42,6 +42,7 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
         tabLayout.getTabAt(0).setText("Categories");
         tabLayout.getTabAt(1).setText("New Orders");
         tabLayout.getTabAt(2).setText("Processed Orders");
+        tabLayout.getTabAt(3).setText("Members");
     }
 
 }

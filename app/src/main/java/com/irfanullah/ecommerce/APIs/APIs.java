@@ -34,6 +34,13 @@ public interface APIs {
     @GET(BASE_URL+"auth/getproducts")
     Call<Product> getProducts(@Query("token") String token, @Query("cat_id") String cat_id);
 
+    @GET(BASE_URL+"auth/getmemcheckouts")
+    Call<Order> getMemberCheckouts(@Query("token") String token, @Query("mem_id") String mem_id);
+
+
+    @GET(BASE_URL+"auth/getmem")
+    Call<User> getMembers(@Query("token") String token);
+
     @GET(BASE_URL+"auth/getproduct")
     Call<Product> getProduct(@Query("token") String token, @Query("product_id") String product_id);
 
@@ -54,6 +61,9 @@ public interface APIs {
 
     @GET(BASE_URL+"auth/shiporder")
     Call<Order> shipOrder(@Query("token") String token,@Query("checkout_id") String checkout_id);
+
+    @GET(BASE_URL+"auth/getprofile")
+    Call<User> getProfile(@Query("token") String token);
 
     @POST(BASE_URL+"auth/addproduct")
     @Multipart

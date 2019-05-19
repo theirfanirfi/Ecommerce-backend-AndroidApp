@@ -62,7 +62,7 @@ public class NOrders extends Fragment implements MainActivityLogic.NewOrdersView
     }
 
     private void initObjects(View view){
-        rv = view.findViewById(R.id.newOrdersRv);
+        rv = view.findViewById(R.id.checkoutsRV);
         progressBar = view.findViewById(R.id.progressBar);
         //ordersAdapter = presenter.setUpRV(rv);
         //presenter.makeOrdersRequest();

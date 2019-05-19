@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.irfanullah.ecommerce.main.Fragments.Categories.CategoriesFrag;
+import com.irfanullah.ecommerce.main.Fragments.MembersFrag.MembersFrag;
 import com.irfanullah.ecommerce.main.Fragments.NewOrdersFrag.NOrders;
 import com.irfanullah.ecommerce.main.Fragments.OlderOrdersFrag.OOrderFrag;
 
@@ -27,6 +28,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 OOrderFrag oOrderFrag = new OOrderFrag();
                 return oOrderFrag;
+            case 3:
+                MembersFrag membersFrag = new MembersFrag();
+                return membersFrag;
         }
 
         return null;
@@ -34,6 +38,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }

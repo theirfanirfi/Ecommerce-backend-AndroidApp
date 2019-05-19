@@ -15,7 +15,6 @@ import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.R;
 import com.irfanullah.ecommerce.main.Adapters.OOrdersAdapter;
-import com.irfanullah.ecommerce.main.Adapters.OrdersAdapter;
 import com.irfanullah.ecommerce.main.MainActivityLogic;
 
 import java.util.ArrayList;
@@ -63,7 +62,7 @@ public class OOrderFrag extends Fragment implements MainActivityLogic.OOrdersVie
     }
 
     private void initObjects(View view){
-        rv = view.findViewById(R.id.newOrdersRv);
+        rv = view.findViewById(R.id.checkoutsRV);
         progressBar = view.findViewById(R.id.progressBar);
        // ordersAdapter = presenter.setUpRV(rv);
         //presenter.makeOrdersRequest();

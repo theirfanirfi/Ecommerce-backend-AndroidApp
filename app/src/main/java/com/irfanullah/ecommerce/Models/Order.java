@@ -11,6 +11,8 @@ public class Order {
     @SerializedName("town") private String TOWNCITY;
     @SerializedName("postalcode") private String POSTALCODE;
     @SerializedName("email") private String EMAIL;
+    @SerializedName("created_at") private String CREATED_AT;
+    @SerializedName("updated_at") private String DISPATCHED_AT;
     @SerializedName("phonenumber") private String PHONENUMBER;
     @SerializedName("total_price") private String TOTALPRICE;
     @SerializedName("message") private String Message;
@@ -27,6 +29,7 @@ public class Order {
     @SerializedName("cat_title") private String CAT_TITLE;
     @SerializedName("products") private ArrayList<Product> PRODUCTS;
     @SerializedName("orders") private ArrayList<Order> ORDERS;
+    @SerializedName("checkouts") private ArrayList<Order> CHECKOUTS;
     @SerializedName("order") private Order ORDER;
     @SerializedName("product_id") private String PRODUCT_ID;
     @SerializedName("product_name") private String PRODUCT_NAME;
@@ -34,6 +37,18 @@ public class Order {
     @SerializedName("product_image") private String PRODUCT_IMAGE;
     @SerializedName("product_price") private String PRODUCT_PRICE;
     @SerializedName("isShipped") private boolean IS_SHIPPED;
+
+    public String getCREATED_AT() {
+        return CREATED_AT;
+    }
+
+    public String getDISPATCHED_AT() {
+        return DISPATCHED_AT;
+    }
+
+    public ArrayList<Order> getCHECKOUTS() {
+        return CHECKOUTS;
+    }
 
     public boolean isIS_SHIPPED() {
         return IS_SHIPPED;

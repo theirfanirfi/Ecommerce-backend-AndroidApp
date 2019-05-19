@@ -52,7 +52,7 @@ public class CategoriesFrag extends Fragment implements CategoriesLogic.View, Ca
         context = getContext();
         presenter = new CategoriesPresenter(this,context);
         addCat = view.findViewById(R.id.fab_btn);
-        rv = view.findViewById(R.id.newOrdersRv);
+        rv = view.findViewById(R.id.checkoutsRV);
         catsLoadingProgressBar = view.findViewById(R.id.catsLoadingProgressBar);
         addCat.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,7 +18,7 @@ import com.irfanullah.ecommerce.order.Logic.ProductsAdapter;
 import java.util.ArrayList;
 
 public class OrderActivity extends AppCompatActivity implements OrderLogic.View {
-    TextView name, address,postalCode,totalPrice, quanity,towncity,email,phoneNumber;
+    TextView name, address,postalCode,totalPrice, quanity,towncity,email,phoneNumber,orderedOn, orderShippedOn;
     RecyclerView rv;
     Context context;
     OrderPresenter presenter;
@@ -46,6 +46,8 @@ public class OrderActivity extends AppCompatActivity implements OrderLogic.View 
         phoneNumber = findViewById(R.id.phoneNumber);
         quanity = findViewById(R.id.productsQuantity);
         totalPrice = findViewById(R.id.totalPrice);
+        orderedOn = findViewById(R.id.orderedOnDate);
+        orderShippedOn = findViewById(R.id.orderShippedOn);
         rv = findViewById(R.id.proRV);
         presenter = new OrderPresenter(context,this,CHECKOUT_ID);
         SC.logHere(this.CHECKOUT_ID);
@@ -63,6 +65,9 @@ public class OrderActivity extends AppCompatActivity implements OrderLogic.View 
         email.setText("Email: "+order.getEMAIL());
         phoneNumber.setText("Phone#: "+order.getPHONENUMBER());
         quanity.setText("Products Ordered: "+order.getQUANTITY());
+        totalPrice.setText("Total Price: "+order.getTOTALPRICE());
+        orderedOn.setText("Ordered on: "+order.getCREATED_AT());
+        orderShippedOn.setText("Order Shipped on: "+order.getDISPATCHED_AT());
         totalPrice.setText("Total Price: "+order.getTOTALPRICE());
 
         if(order.getIS_PROCESSED() == 1){
@@ -122,15 +127,24 @@ public class OrderActivity extends AppCompatActivity implements OrderLogic.View 
         int id = item.getItemId();
         if(id == R.id.ship_order_menu){
             presenter.shipOrder();
+        } else if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+
         }
 
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
     public void onOrderShipped() {
         this.IS_PROCESSED = 1;
         onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

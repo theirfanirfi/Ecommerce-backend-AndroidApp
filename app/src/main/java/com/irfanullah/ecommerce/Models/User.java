@@ -2,6 +2,8 @@ package com.irfanullah.ecommerce.Models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class User {
 
     @SerializedName("id") private String USER_ID;
@@ -14,8 +16,28 @@ public class User {
     @SerializedName("isError") private boolean isError;
     @SerializedName("invalidCreds") private boolean invalidCreds;
     @SerializedName("isLoggedIn") private boolean isLoggedIn;
+    @SerializedName("isFound") private boolean isFound;
     @SerializedName("user") private User user;
     @SerializedName("token") private String TOKEN;
+    @SerializedName("message") private String MESSAGE;
+    @SerializedName("shipmentduration") private String SHIPMENTDURATION;
+    @SerializedName("members") private ArrayList<User> MEMBERS;
+
+    public String getSHIPMENTDURATION() {
+        return SHIPMENTDURATION;
+    }
+
+    public String getMESSAGE() {
+        return MESSAGE;
+    }
+
+    public boolean isFound() {
+        return isFound;
+    }
+
+    public ArrayList<User> getMEMBERS() {
+        return MEMBERS;
+    }
 
     public String getTOKEN() {
         return TOKEN;

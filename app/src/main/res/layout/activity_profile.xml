@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.ProfileActivity"
+    android:orientation="vertical"
+    android:background="@drawable/blackwithorangeborder"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile Details"
+                android:textColor="@color/borderColor"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full name:"
+                android:textColor="@color/borderColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="12dp"
+                />
+
+            <EditText
+                android:id="@+id/fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackText"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:padding="12dp"
+                android:layout_margin="6dp"
+                android:hint="Full name"
+                />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textColor="@color/borderColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="12dp"
+                />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:padding="12dp"
+                android:textColor="@color/blackText"
+
+                android:inputType="textEmailAddress"
+                android:layout_margin="6dp"
+                android:hint="Email"
+                />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If you don't want to change password, \nleave both the fields empty."
+                android:textColor="@color/whiteColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="12dp"
+                />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Password:"
+                android:textColor="@color/borderColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="12dp"
+                />
+
+            <EditText
+                android:id="@+id/cpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:padding="12dp"
+                android:inputType="textEmailAddress"
+                android:layout_margin="6dp"
+                android:textColor="@color/blackText"
+
+                android:hint="Current Password"
+                />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Password:"
+                android:textColor="@color/borderColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="12dp"
+                />
+
+            <EditText
+                android:id="@+id/npass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:padding="12dp"
+                android:inputType="textEmailAddress"
+                android:layout_margin="6dp"
+                android:textColor="@color/blackText"
+
+                android:hint="New Password"
+                />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Shipment"
+                android:textColor="@color/borderColor"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Shipment duration (in days)"
+                android:textColor="@color/borderColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="12dp"
+                />
+
+            <EditText
+                android:id="@+id/orderShipmentDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:padding="12dp"
+                android:textColor="@color/blackText"
+
+                android:inputType="textEmailAddress"
+                android:layout_margin="6dp"
+                android:hint="Order Shipment duration (in days)"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Changes"
+                android:background="@drawable/squareyellowithblacktextbtn"
+                android:layout_margin="12dp"
+                android:padding="12dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
