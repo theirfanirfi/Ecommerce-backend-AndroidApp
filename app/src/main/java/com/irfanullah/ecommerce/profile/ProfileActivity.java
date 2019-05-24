@@ -3,6 +3,7 @@ package com.irfanullah.ecommerce.profile;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -28,9 +29,18 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
         email = findViewById(R.id.email);
         currentPass = findViewById(R.id.cpass);
         newPass = findViewById(R.id.npass);
+        saveBtn = findViewById(R.id.saveChangesBtn);
         shipmentDuration = findViewById(R.id.orderShipmentDuration);
         presenter = new ProfilePresenter(this,context);
         presenter.loadProfile();
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.validaeFields(name.getText().toString(),email.getText().toString(),currentPass.getText().toString(),newPass.getText().toString(),
+                        shipmentDuration.getText().toString());
+            }
+        });
     }
 
     @Override
@@ -57,5 +67,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
 
     @Override
     public void onUpdated() {
+        SC.toastHere(context,"Profile Updated.");
     }
 }

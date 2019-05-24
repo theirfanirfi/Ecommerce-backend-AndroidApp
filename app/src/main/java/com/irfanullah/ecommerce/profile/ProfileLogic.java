@@ -13,6 +13,6 @@ public interface ProfileLogic {
 
     interface Presenter {
         void loadProfile();
-        void validaeFields();
+        void validaeFields(String name,String email,String cpass, String npass,String duration);
     }
 }

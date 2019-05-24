@@ -81,4 +81,9 @@ public interface APIs {
     @FormUrlEncoded
     Call<Product> updateProductWithOutImage(@Field("token") String token, @Field("product_name") String product_name, @Field("product_quantity") String quantity,
                                 @Field("product_price") String price,@Field("product_id") String product_id, @Field("cat_id") String cat_id);
+
+    @POST(BASE_URL+"auth/updateprofile")
+    @FormUrlEncoded
+    Call<User> updateProfile(@Field("token") String token, @Field("name") String name, @Field("email") String email,
+                                            @Field("sduration") String duration,@Field("uc") int isPassword, @Field("cpass") String cpass, @Field("npass") String npass);
 }

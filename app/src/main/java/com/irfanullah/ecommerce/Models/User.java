@@ -17,11 +17,16 @@ public class User {
     @SerializedName("invalidCreds") private boolean invalidCreds;
     @SerializedName("isLoggedIn") private boolean isLoggedIn;
     @SerializedName("isFound") private boolean isFound;
+    @SerializedName("isUpdated") private boolean isUpdated;
     @SerializedName("user") private User user;
     @SerializedName("token") private String TOKEN;
     @SerializedName("message") private String MESSAGE;
     @SerializedName("shipmentduration") private String SHIPMENTDURATION;
     @SerializedName("members") private ArrayList<User> MEMBERS;
+
+    public boolean isUpdated() {
+        return isUpdated;
+    }
 
     public String getSHIPMENTDURATION() {
         return SHIPMENTDURATION;
