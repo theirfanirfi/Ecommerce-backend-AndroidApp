@@ -2,6 +2,7 @@ package com.irfanullah.ecommerce.APIs;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Models.Category;
+import com.irfanullah.ecommerce.Models.Gallery;
 import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Models.User;
@@ -69,21 +70,36 @@ public interface APIs {
     @Multipart
     Call<Product> addProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
                             @Part("product_price") RequestBody price, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
-                             );
+                             ,@Part("desc") RequestBody product_desc);
+
 
     @POST(BASE_URL+"auth/updateproduct")
     @Multipart
     Call<Product> updateProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
                              @Part("product_price") RequestBody price,@Part("product_id") RequestBody product_id, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
-    );
+    ,@Part("desc") RequestBody product_description);
 
     @POST(BASE_URL+"auth/updateproduct")
     @FormUrlEncoded
     Call<Product> updateProductWithOutImage(@Field("token") String token, @Field("product_name") String product_name, @Field("product_quantity") String quantity,
-                                @Field("product_price") String price,@Field("product_id") String product_id, @Field("cat_id") String cat_id);
+                                @Field("product_price") String price,@Field("product_id") String product_id, @Field("cat_id") String cat_id,@Field("desc") String product_description);
 
     @POST(BASE_URL+"auth/updateprofile")
     @FormUrlEncoded
-    Call<User> updateProfile(@Field("token") String token, @Field("name") String name, @Field("email") String email,
-                                            @Field("sduration") String duration,@Field("uc") int isPassword, @Field("cpass") String cpass, @Field("npass") String npass);
+    Call<User> updateProfile(@Field("token") String token, @Field("name") String name,
+                             @Field("email") String email,@Field("uc") int isPassword,
+                             @Field("cpass") String cpass, @Field("npass") String npass,
+                             @Field("openingtime") String openingtime,@Field("closingtime") String closingtime,
+                             @Field("service_time") String service_time);
+
+
+
+    //Gallery
+
+    @POST(BASE_URL+"auth/uploadimage")
+    @Multipart
+    Call<Gallery> addGalleryImage(@Part("token") RequestBody token, @Part("image_title") RequestBody image_title, @Part MultipartBody.Part product_image);
+
+    @GET(BASE_URL+"auth/getgallery")
+    Call<Gallery> getGallery(@Query("token") String token);
 }

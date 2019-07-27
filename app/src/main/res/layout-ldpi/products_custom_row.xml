@@ -14,7 +14,7 @@
         >
 
         <ImageView
-            android:id="@+id/product_img"
+            android:id="@+id/gallery_img"
             android:layout_width="97dp"
             android:layout_height="85dp"
             android:layout_marginStart="4dp"
@@ -41,7 +41,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.264"
-            app:layout_constraintStart_toEndOf="@+id/product_img"
+            app:layout_constraintStart_toEndOf="@+id/gallery_img"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

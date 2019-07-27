@@ -19,7 +19,7 @@ import com.irfanullah.ecommerce.Storage.Pref;
 
 public class ProductActivity extends AppCompatActivity implements ProductLogic.View {
 
-    private TextView product_name, product_price,product_quantity,products_sold;
+    private TextView product_name, product_price,product_quantity,products_sold, product_description;
     private ImageView product_image;
     private Context context;
     private String PRODUCT_ID = "";
@@ -41,7 +41,7 @@ public class ProductActivity extends AppCompatActivity implements ProductLogic.V
         product_quantity = findViewById(R.id.product_quantity);
         products_sold = findViewById(R.id.products_sold);
         product_image = findViewById(R.id.product_image);
-
+        product_description = findViewById(R.id.product_description);
 
         presenter = new ProductPresenter(context,this,PRODUCT_ID);
         presenter.getProductRequest();
@@ -56,6 +56,7 @@ public class ProductActivity extends AppCompatActivity implements ProductLogic.V
         product_price.setText("Price: " +product.getPRODUCT_PRICE());
         product_quantity.setText("Quantity: "+product.getPRODUCT_QUANTITY());
         products_sold.setText("Sold: "+product.getPRODUCT_SOLD());
+        product_description.setText(product.getPRODUCT_DESC());
 
         if(!product.getPRODUCT_IMAGE().isEmpty()) {
             Glib.loadImage(context,product.getPRODUCT_IMAGE()).into(product_image);

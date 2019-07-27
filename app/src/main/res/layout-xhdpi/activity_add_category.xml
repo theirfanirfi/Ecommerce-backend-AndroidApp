@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/product_img"
+        android:id="@+id/gallery_img"
         android:layout_width="wrap_content"
         android:layout_height="198dp"
         android:layout_marginStart="8dp"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product_img" />
+        app:layout_constraintTop_toBottomOf="@+id/gallery_img" />
 
     <Button
         android:id="@+id/addCatBtn"

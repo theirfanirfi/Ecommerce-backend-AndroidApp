@@ -44,7 +44,7 @@ public class AddCategoryActivity extends AppCompatActivity implements CatLogic.V
         chooseImageBtn = findViewById(R.id.chooseProductImageBtn);
         addCatBtn = findViewById(R.id.addCatBtn);
         cat_title_field = findViewById(R.id.product_name);
-        cat_image_view = findViewById(R.id.product_img);
+        cat_image_view = findViewById(R.id.gallery_img);
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);
 

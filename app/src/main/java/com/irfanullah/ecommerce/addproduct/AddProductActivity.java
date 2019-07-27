@@ -17,11 +17,9 @@ import android.widget.TextView;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.R;
 
-import java.net.URI;
-
 public class AddProductActivity extends AppCompatActivity implements AddProductLogic.View {
 
-    private EditText product_name,product_quantity, product_price;
+    private EditText product_name,product_quantity, product_price, product_description;
     private ImageView product_image_view;
     private Button chooseImageBtn,addProductBtn;
     private ProgressBar progressBar;
@@ -45,11 +43,12 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
         product_name = findViewById(R.id.product_name);
         product_quantity = findViewById(R.id.productQuantity);
         product_price = findViewById(R.id.productPrice);
-        product_image_view = findViewById(R.id.product_img);
+        product_image_view = findViewById(R.id.gallery_img);
         chooseImageBtn = findViewById(R.id.chooseProductImageBtn);
         addProductBtn = findViewById(R.id.addProductBtn);
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);
+        product_description = findViewById(R.id.product_description);
         getSupportActionBar().setTitle("Add Product");
         presenter = new AddProductPresenter(context,this);
 
@@ -63,7 +62,7 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_price.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri);
+                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_price.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri,product_description.getText().toString());
             }
         });
 
@@ -76,6 +75,7 @@ public class AddProductActivity extends AppCompatActivity implements AddProductL
         product_name.setText("");
         product_quantity.setText("");
         product_price.setText("");
+        product_description.setText("");
         SC.toastHere(context,"Product Added.");
     }
 

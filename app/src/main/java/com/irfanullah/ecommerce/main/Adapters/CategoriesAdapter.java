@@ -54,8 +54,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
         public CategoryView(@NonNull View itemView, Context context, final CategoryClickListener categoryClickListener, final ArrayList<Category> categories) {
             super(itemView);
-            cat_image = itemView.findViewById(R.id.product_img);
-            cat_title = itemView.findViewById(R.id.cat_title);
+            cat_image = itemView.findViewById(R.id.gallery_img);
+            cat_title = itemView.findViewById(R.id.image_title);
 
             cat_image.setOnClickListener(new View.OnClickListener() {
                 @Override

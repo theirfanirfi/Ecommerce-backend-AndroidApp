@@ -134,7 +134,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Shipment"
+                android:text="Service Settings"
                 android:textColor="@color/borderColor"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -153,17 +153,28 @@
                 />
 
             <EditText
-                android:id="@+id/orderShipmentDuration"
+                android:id="@+id/openingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="6dp"
                 android:background="@drawable/textfieldorangewithwhite"
-                android:padding="12dp"
-                android:textColor="@color/blackText"
+                android:hint="Opening Time"
 
                 android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:textColor="@color/blackText" />
+
+            <EditText
+                android:id="@+id/closingHour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="6dp"
-                android:hint="Order Shipment duration (in days)"
-                />
+                android:background="@drawable/textfieldorangewithwhite"
+                android:hint="Closing Time"
+
+                android:inputType="time"
+                android:padding="12dp"
+                android:textColor="@color/blackText" />
 
             <Button
                 android:id="@+id/saveChangesBtn"

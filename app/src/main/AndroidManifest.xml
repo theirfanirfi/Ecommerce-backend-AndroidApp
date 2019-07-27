@@ -16,7 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.ProfileActivity" android:parentActivityName=".main.MainActivity"></activity>
+        <activity android:name=".appointments.AppointmentActivity">
+        </activity>
+
+        <activity android:name=".addgallerypic.AddGalleryPicActivity" android:parentActivityName=".main.MainActivity">
+
+        </activity>
+        <activity android:name=".gallery.GalleryActivity" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:parentActivityName=".main.MainActivity" />
         <activity
             android:name=".membercheckouts.MemberCheckoutsActivity"
             android:parentActivityName=".main.MainActivity" />

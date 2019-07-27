@@ -153,7 +153,7 @@
                 />
 
             <EditText
-                android:id="@+id/orderShipmentDuration"
+                android:id="@+id/openingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textfieldorangewithwhite"

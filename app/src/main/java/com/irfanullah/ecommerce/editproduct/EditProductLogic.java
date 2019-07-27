@@ -15,7 +15,7 @@ public interface EditProductLogic {
     }
 
     interface Preseneter {
-        void validateInputFieldsAndMakeProductAddRequest(String name, String price, String quantity, String cat_id, Uri image_uri,boolean hasImage);
+        void validateInputFieldsAndMakeProductAddRequest(String name, String price, String quantity, String cat_id, Uri image_uri,boolean hasImage,String desc);
         void loadProductData();
     }
 }

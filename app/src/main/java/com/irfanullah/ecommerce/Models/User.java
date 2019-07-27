@@ -14,23 +14,49 @@ public class User {
     @SerializedName("isEmpty") private boolean isEmpty;
     @SerializedName("isAuthenticated") private boolean isAuthenticated;
     @SerializedName("isError") private boolean isError;
+    @SerializedName("is_barber") private int isBarber;
     @SerializedName("invalidCreds") private boolean invalidCreds;
     @SerializedName("isLoggedIn") private boolean isLoggedIn;
     @SerializedName("isFound") private boolean isFound;
     @SerializedName("isUpdated") private boolean isUpdated;
     @SerializedName("user") private User user;
     @SerializedName("token") private String TOKEN;
+
+    @SerializedName("off_day") private String OFFDAY;
+    @SerializedName("openingtime") private String OPENINGTIME;
+    @SerializedName("closingtime") private String CLOSINGTIME;
+
+
+
     @SerializedName("message") private String MESSAGE;
-    @SerializedName("shipmentduration") private String SHIPMENTDURATION;
+    @SerializedName("time_diff_minutes") private String TIMEDIFF;
     @SerializedName("members") private ArrayList<User> MEMBERS;
+
+
+    public int isBarber() {
+        return isBarber;
+    }
+
+    public String getOFFDAY() {
+        return OFFDAY;
+    }
+
+    public String getOPENINGTIME() {
+        return OPENINGTIME;
+    }
+
+    public String getCLOSINGTIME() {
+        return CLOSINGTIME;
+    }
+
+    public String getTIMEDIFF() {
+        return TIMEDIFF;
+    }
 
     public boolean isUpdated() {
         return isUpdated;
     }
 
-    public String getSHIPMENTDURATION() {
-        return SHIPMENTDURATION;
-    }
 
     public String getMESSAGE() {
         return MESSAGE;

@@ -3,6 +3,7 @@ package com.irfanullah.ecommerce.profile;
 import android.content.Context;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
+import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Models.User;
 import com.irfanullah.ecommerce.Storage.Pref;
@@ -50,7 +51,8 @@ public class ProfilePresenter implements ProfileLogic.Presenter {
     }
 
     @Override
-    public void validaeFields(String name,String email,String cpass, String npass,String duration) {
+    public void validaeFields(String name,String email,String cpass, String npass,String openingTime, String closingTime,
+                              String service_time) {
 
         int isPassword = 0;
 
@@ -58,19 +60,25 @@ public class ProfilePresenter implements ProfileLogic.Presenter {
             isPassword = 1;
         }
 
-        if(name.isEmpty() || email.isEmpty() || duration.isEmpty()){
-            view.onError("Name, email and shipment duration fields are mandatory, these fields cannot be empty.");
+        if(name.isEmpty() || email.isEmpty() || openingTime.isEmpty()|| closingTime.isEmpty()
+                || service_time.isEmpty()){
+            view.onError("Name, email, service time and time fields are mandatory, these fields cannot be empty.");
         }else if(isPassword == 1 && (npass.isEmpty() || cpass.isEmpty())){
             view.onError("If you want to update password, then the password fields cannot be empty.");
         }else if(isPassword == 1 && npass.length() < 6){
             view.onError("Password length must be at least six characters long.");
         }else {
-            updateProfileRequest(name,email,cpass,npass,duration,isPassword);
+            updateProfileRequest( name, email, cpass,  npass, openingTime, closingTime,
+                     service_time,isPassword);
         }
     }
 
-    private void updateProfileRequest(String name,String email,String cpass, String npass,String duration,int isPassword){
-        RetroLib.getAPIServices().updateProfile(Pref.getUser(context).getTOKEN(),name,email,duration,isPassword,cpass,npass).enqueue(new Callback<User>() {
+    private void updateProfileRequest(String name,String email,String cpass, String npass,String openingTime,String closingTime,
+                                      String service_time,int isPassword){
+
+
+        RetroLib.getAPIServices().updateProfile(Pref.getUser(context).getTOKEN(),name,email,isPassword,cpass,npass,openingTime, closingTime,
+                service_time).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){

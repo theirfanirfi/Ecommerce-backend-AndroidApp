@@ -36,7 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deleteProduct"
+        app:layout_constraintEnd_toStartOf="@+id/products_sold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product_name"
         app:srcCompat="@drawable/newtech" />
@@ -71,40 +71,13 @@
         android:id="@+id/products_sold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="TextView"
         android:textColor="@color/borderColor"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProduct" />
-
-    <Button
-        android:id="@+id/editProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/yellowithblacktextbtn"
-        android:padding="8dp"
-        android:text="Edit Product "
-        android:textColor="@color/blackText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteProduct" />
-
-    <Button
-        android:id="@+id/deleteProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/yellowithblacktextbtn"
-        android:padding="8dp"
-        android:text="Delete Product "
-        android:textColor="@color/blackText"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
