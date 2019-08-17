@@ -1,10 +1,12 @@
 package com.irfanullah.ecommerce.APIs;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
+import com.irfanullah.ecommerce.Models.Appointment;
 import com.irfanullah.ecommerce.Models.Category;
 import com.irfanullah.ecommerce.Models.Gallery;
 import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.Product;
+import com.irfanullah.ecommerce.Models.Service;
 import com.irfanullah.ecommerce.Models.User;
 
 import okhttp3.MultipartBody;
@@ -102,4 +104,24 @@ public interface APIs {
 
     @GET(BASE_URL+"auth/getgallery")
     Call<Gallery> getGallery(@Query("token") String token);
+
+    //appointments
+    @GET(BASE_URL+"auth/getmonthappointments")
+    Call<Appointment> getMonthApts(@Query("token") String token,@Query("month") String month,@Query("year") String year);
+    @GET(BASE_URL+"auth/getdayappointments")
+    Call<Appointment> getDayApts(@Query("token") String token,@Query("month") String month,@Query("year") String year,@Query("day") String day);
+
+    //services
+    @GET(BASE_URL+"auth/getservices")
+    Call<Service> getservices(@Query("token") String token);
+    @GET(BASE_URL+"auth/addservice")
+    Call<Service> addservice(@Query("token") String token,@Query("service_name") String service_name,
+                             @Query("service_cost") String service_cost);
+
+    @GET(BASE_URL+"auth/updateservice")
+    Call<Service> updateService(@Query("token") String token,@Query("service_name") String service_name,
+                             @Query("service_cost") String service_cost,@Query("service_id") String service_id);
+    @GET(BASE_URL+"auth/deleteservice")
+    Call<Service> deleteService(@Query("token") String token,@Query("service_id") String service_id);
+
 }

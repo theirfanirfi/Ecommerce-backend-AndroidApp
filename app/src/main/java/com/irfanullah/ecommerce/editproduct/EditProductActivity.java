@@ -45,12 +45,12 @@ public class EditProductActivity extends AppCompatActivity implements EditProduc
         context = this;
         CAT_ID = getIntent().getExtras().getString("cat_id");
         PRODUCT_ID = getIntent().getExtras().getString("product_id");
-        product_name = findViewById(R.id.product_name);
+        product_name = findViewById(R.id.service_name);
         product_quantity = findViewById(R.id.productQuantity);
-        product_price = findViewById(R.id.productPrice);
+        product_price = findViewById(R.id.service_cost);
         product_image_view = findViewById(R.id.gallery_img);
         chooseImageBtn = findViewById(R.id.chooseProductImageBtn);
-        addProductBtn = findViewById(R.id.addProductBtn);
+        addProductBtn = findViewById(R.id.addServiceBtn);
         addProductBtn.setText("Update Product");
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);

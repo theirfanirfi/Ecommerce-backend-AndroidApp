@@ -43,4 +43,5 @@ dependencies {
     //implementation 'com.snollidea:peppy-calendarview:0.1.0'
     implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

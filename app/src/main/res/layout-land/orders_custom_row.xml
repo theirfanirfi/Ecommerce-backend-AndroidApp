@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/townCity" />
 
         <TextView
-            android:id="@+id/productPrice"
+            android:id="@+id/service_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -91,6 +91,6 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/service_cost" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

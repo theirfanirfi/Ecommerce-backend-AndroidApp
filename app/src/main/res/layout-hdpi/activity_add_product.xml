@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/product_description" />
 
             <EditText
-                android:id="@+id/product_name"
+                android:id="@+id/service_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/addProductBtn"
+                android:id="@+id/addServiceBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -115,7 +115,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/gallery_img" />
 
             <EditText
-                android:id="@+id/productPrice"
+                android:id="@+id/service_cost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -152,7 +152,7 @@
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/product_name" />
+                app:layout_constraintTop_toBottomOf="@+id/service_name" />
 
             <EditText
                 android:id="@+id/product_description"
@@ -172,7 +172,7 @@
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/service_cost" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Ecommerce</string>
+    <string name="app_name">Barber</string>
 
     <!-- main activity tab layout tabs titles-->
     <string name="cats_tab_title">Categories</string>
     <string name="products_tab_title">Proudcts</string>
-    <string name="new_orders_tab_title">New orders</string>
+    <string name="new_orders_tab_title">Appointments</string>
     <string name="entertained_orders_tab_title">Entertained orders</string>
     <string name="members_tab_title">Members</string>
     <string name="cat_adding_status_message">Please wait, the category is being added.</string>

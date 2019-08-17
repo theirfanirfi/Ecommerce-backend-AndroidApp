@@ -1,13 +1,9 @@
 package com.irfanullah.ecommerce.product;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +11,6 @@ import com.irfanullah.ecommerce.Libraries.Glib;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.R;
-import com.irfanullah.ecommerce.Storage.Pref;
 
 public class ProductActivity extends AppCompatActivity implements ProductLogic.View {
 
@@ -36,7 +31,7 @@ public class ProductActivity extends AppCompatActivity implements ProductLogic.V
 
     private void initObjects(){
         context = this;
-        product_name = findViewById(R.id.product_name);
+        product_name = findViewById(R.id.service_name);
         product_price = findViewById(R.id.product_price);
         product_quantity = findViewById(R.id.product_quantity);
         products_sold = findViewById(R.id.products_sold);

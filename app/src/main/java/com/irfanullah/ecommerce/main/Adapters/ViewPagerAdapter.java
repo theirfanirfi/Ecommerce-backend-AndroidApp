@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.irfanullah.ecommerce.main.Fragments.AppointmentsFrag.AppointmentsFrag;
 import com.irfanullah.ecommerce.main.Fragments.Categories.CategoriesFrag;
 import com.irfanullah.ecommerce.main.Fragments.Gallery.GalleryFrag;
 import com.irfanullah.ecommerce.main.Fragments.MembersFrag.MembersFrag;
@@ -24,7 +25,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 GalleryFrag galleryFrag = new GalleryFrag();
                 return galleryFrag;
             case 1:
-                NOrders nOrders = new NOrders();
+                AppointmentsFrag nOrders = new AppointmentsFrag();
                 return nOrders;
             case 2:
                 OOrderFrag oOrderFrag = new OOrderFrag();

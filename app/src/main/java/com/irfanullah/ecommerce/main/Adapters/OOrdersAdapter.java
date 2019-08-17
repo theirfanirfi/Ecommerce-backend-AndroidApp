@@ -62,7 +62,7 @@ public class OOrdersAdapter extends RecyclerView.Adapter<OOrdersAdapter.OrderVie
             address = itemView.findViewById(R.id.address);
             townCity = itemView.findViewById(R.id.townCity);
             pOrdered = itemView.findViewById(R.id.pOrdered);
-            price = itemView.findViewById(R.id.productPrice);
+            price = itemView.findViewById(R.id.service_cost);
 
             processOrderBtn = itemView.findViewById(R.id.proOrderBtn);
             processOrderBtn.setVisibility(View.GONE);

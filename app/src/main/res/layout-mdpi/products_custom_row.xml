@@ -28,7 +28,7 @@
             app:srcCompat="@drawable/catimg" />
 
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/service_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -45,16 +45,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/productPrice"
+            android:id="@+id/service_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Price: 10000$"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/product_name"
+            app:layout_constraintEnd_toEndOf="@+id/service_name"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/product_name"
-            app:layout_constraintTop_toBottomOf="@+id/product_name" />
+            app:layout_constraintStart_toStartOf="@+id/service_name"
+            app:layout_constraintTop_toBottomOf="@+id/service_name" />
 
         <TextView
             android:id="@+id/quantityAndSold"
@@ -62,9 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Q: 55 - Sold: 40"
-            app:layout_constraintEnd_toEndOf="@+id/product_name"
+            app:layout_constraintEnd_toEndOf="@+id/service_name"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/product_name"
-            app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+            app:layout_constraintStart_toStartOf="@+id/service_name"
+            app:layout_constraintTop_toBottomOf="@+id/service_cost" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

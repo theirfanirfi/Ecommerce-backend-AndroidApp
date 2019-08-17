@@ -16,12 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".appointments.AppointmentActivity">
-        </activity>
-
-        <activity android:name=".addgallerypic.AddGalleryPicActivity" android:parentActivityName=".main.MainActivity">
-
-        </activity>
+        <activity android:name=".service.AddServiceActivity" android:parentActivityName=".service.ServicesActivity"></activity>
+        <activity
+            android:name=".service.ServicesActivity"
+            android:parentActivityName=".main.MainActivity" />
+        <activity android:name=".appointments.AppointmentActivity" />
+        <activity
+            android:name=".addgallerypic.AddGalleryPicActivity"
+            android:parentActivityName=".main.MainActivity" />
         <activity android:name=".gallery.GalleryActivity" />
         <activity
             android:name=".profile.ProfileActivity"

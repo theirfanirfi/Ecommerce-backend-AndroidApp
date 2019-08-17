@@ -57,8 +57,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         public ProductView(@NonNull View itemView, final ProductClickListener productClickListener) {
             super(itemView);
             product_image = itemView.findViewById(R.id.gallery_img);
-            product_name = itemView.findViewById(R.id.product_name);
-            quantityPrice = itemView.findViewById(R.id.productPrice);
+            product_name = itemView.findViewById(R.id.service_name);
+            quantityPrice = itemView.findViewById(R.id.service_cost);
 
 //            product_name.setOnClickListener(new View.OnClickListener() {
 //                @Override

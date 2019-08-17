@@ -1,10 +1,12 @@
 package com.irfanullah.ecommerce.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 
 import com.irfanullah.ecommerce.R;
 import com.irfanullah.ecommerce.Storage.Pref;
+import com.irfanullah.ecommerce.service.ServicesActivity;
 
 public class MainActPresenter implements MainActivityLogic.Presenter {
 
@@ -25,6 +27,9 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
             case R.id.logout:
                 logout();
                 break;
+            case R.id.services:
+                gotoServiceAcitivity();
+                break;
         }
     }
 
@@ -40,9 +45,14 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
     @Override
     public void setUpTabsTitle(TabLayout tabLayout) {
         tabLayout.getTabAt(0).setText("Gallery");
-        tabLayout.getTabAt(1).setText("New Orders");
+        tabLayout.getTabAt(1).setText("Appointments");
         tabLayout.getTabAt(2).setText("Processed Orders");
         tabLayout.getTabAt(3).setText("Members");
+    }
+
+    private void gotoServiceAcitivity(){
+        Intent servicesAct = new Intent(context, ServicesActivity.class);
+        context.startActivity(servicesAct);
     }
 
 }
