@@ -21,6 +21,7 @@ public class User {
     @SerializedName("isUpdated") private boolean isUpdated;
     @SerializedName("user") private User user;
     @SerializedName("token") private String TOKEN;
+    @SerializedName("profile_image") private String PROFILE_IMAGE;
 
     @SerializedName("off_day") private String OFFDAY;
     @SerializedName("openingtime") private String OPENINGTIME;
@@ -116,5 +117,13 @@ public class User {
 
     public User getUser() {
         return user;
+    }
+
+    public int getIsBarber() {
+        return isBarber;
+    }
+
+    public String getPROFILE_IMAGE() {
+        return PROFILE_IMAGE;
     }
 }

@@ -5,6 +5,7 @@ import com.irfanullah.ecommerce.Models.Appointment;
 import com.irfanullah.ecommerce.Models.Category;
 import com.irfanullah.ecommerce.Models.Gallery;
 import com.irfanullah.ecommerce.Models.Order;
+import com.irfanullah.ecommerce.Models.Participants;
 import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Models.Service;
 import com.irfanullah.ecommerce.Models.User;
@@ -123,5 +124,11 @@ public interface APIs {
                              @Query("service_cost") String service_cost,@Query("service_id") String service_id);
     @GET(BASE_URL+"auth/deleteservice")
     Call<Service> deleteService(@Query("token") String token,@Query("service_id") String service_id);
+
+
+    //chat
+    @GET(BASE_URL+"auth/getparticipants")
+    Call<Participants> getParticipants(@Query("token") String token);
+
 
 }

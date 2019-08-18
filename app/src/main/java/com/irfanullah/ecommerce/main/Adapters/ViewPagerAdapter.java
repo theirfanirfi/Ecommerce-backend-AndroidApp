@@ -6,10 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.irfanullah.ecommerce.main.Fragments.AppointmentsFrag.AppointmentsFrag;
 import com.irfanullah.ecommerce.main.Fragments.Categories.CategoriesFrag;
+import com.irfanullah.ecommerce.main.Fragments.Chat.ChatFragment;
 import com.irfanullah.ecommerce.main.Fragments.Gallery.GalleryFrag;
 import com.irfanullah.ecommerce.main.Fragments.MembersFrag.MembersFrag;
-import com.irfanullah.ecommerce.main.Fragments.NewOrdersFrag.NOrders;
-import com.irfanullah.ecommerce.main.Fragments.OlderOrdersFrag.OOrderFrag;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -28,8 +27,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 AppointmentsFrag nOrders = new AppointmentsFrag();
                 return nOrders;
             case 2:
-                OOrderFrag oOrderFrag = new OOrderFrag();
-                return oOrderFrag;
+                ChatFragment chatFragment = new ChatFragment();
+                return chatFragment;
             case 3:
                 MembersFrag membersFrag = new MembersFrag();
                 return membersFrag;
