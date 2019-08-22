@@ -15,6 +15,7 @@ public interface CategoriesLogic {
         void hideProgressBar();
         void showProgressBar();
         void onError(String message);
+        void onCategoryDeleted(int position, Category category);
     }
 
     interface Presenter {

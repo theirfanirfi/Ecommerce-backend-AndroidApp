@@ -28,8 +28,19 @@ public interface APIs {
     @POST(BASE_URL+"auth/addcat")
     Call<Category> addcat(@Part("token") RequestBody token, @Part("cat_title") RequestBody cat_title, @Part MultipartBody.Part cat_image);
 
+    @Multipart
+    @POST(BASE_URL+"auth/editcat")
+    Call<Category> updateCate(@Part("token") RequestBody token, @Part("cat_id") RequestBody cat_id,@Part("cat_title") RequestBody cat_title, @Part MultipartBody.Part cat_image);
+
+
     @GET(BASE_URL+"auth/getCategories")
     Call<Category> loadCategories(@Query("token") String token);
+
+    @GET(BASE_URL+"auth/getcat")
+    Call<Category> getCategory(@Query("token") String token,@Query("cat_id") String cat_id);
+
+    @GET(BASE_URL+"auth/deletecategory")
+    Call<Category> deleteCategory(@Query("token") String token, @Query("cid") String cat_id);
 
     @GET(BASE_URL+"auth/getproducts")
     Call<Product> getProducts(@Query("token") String token, @Query("cat_id") String cat_id);
@@ -69,18 +80,18 @@ public interface APIs {
     @Multipart
     Call<Product> addProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
                             @Part("product_price") RequestBody price, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
-                             );
+                             ,@Part("desc") RequestBody product_desc);
 
     @POST(BASE_URL+"auth/updateproduct")
     @Multipart
     Call<Product> updateProduct(@Part("token") RequestBody token, @Part("product_name") RequestBody product_name, @Part("product_quantity") RequestBody quantity,
                              @Part("product_price") RequestBody price,@Part("product_id") RequestBody product_id, @Part("cat_id") RequestBody cat_id, @Part MultipartBody.Part product_image
-    );
+    ,@Part("desc") RequestBody product_description);
 
     @POST(BASE_URL+"auth/updateproduct")
     @FormUrlEncoded
     Call<Product> updateProductWithOutImage(@Field("token") String token, @Field("product_name") String product_name, @Field("product_quantity") String quantity,
-                                @Field("product_price") String price,@Field("product_id") String product_id, @Field("cat_id") String cat_id);
+                                @Field("product_price") String price,@Field("product_id") String product_id, @Field("cat_id") String cat_id,@Field("desc") String product_description);
 
     @POST(BASE_URL+"auth/updateprofile")
     @FormUrlEncoded

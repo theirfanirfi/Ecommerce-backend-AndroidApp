@@ -27,31 +27,32 @@ public class AddProductPresenter implements AddProductLogic.Preseneter {
     }
 
     @Override
-    public void validateInputFieldsAndMakeProductAddRequest(String name,String price, String quantity, String cat_id, Uri image_uri) {
-        if(name.isEmpty() || quantity.isEmpty() || cat_id.isEmpty() || image_uri == null || price.isEmpty()){
+    public void validateInputFieldsAndMakeProductAddRequest(String name,String price, String quantity, String cat_id, Uri image_uri, String desc) {
+        if(name.isEmpty() || quantity.isEmpty() || cat_id.isEmpty() || image_uri == null || price.isEmpty() || desc.isEmpty()){
             view.onError("None of the fields can be empty.");
         }else {
             if(Pref.isLoggedIn(context)){
-                makeAddProductRequest(name,price,quantity,cat_id,image_uri);
+                makeAddProductRequest(name,price,quantity,cat_id,image_uri,desc);
             }else {
                 view.onError("You are not logged in.");
             }
         }
     }
 
-    private void makeAddProductRequest(String name, String price, String quantity, String cat_id, Uri image_uri){
+    private void makeAddProductRequest(String name, String price, String quantity, String cat_id, Uri image_uri,String desc){
         String path = SC.getRealPathFromURIPath(image_uri,context);
         File file = new File(path);
 
         RequestBody tokenBody = RequestBody.create(MediaType.parse("multipart/form-data"),Pref.getUser(context).getTOKEN());
         RequestBody pname = RequestBody.create(MediaType.parse("multipart/form-data"),name);
+        RequestBody pdesc = RequestBody.create(MediaType.parse("multipart/form-data"),desc);
         RequestBody pquan = RequestBody.create(MediaType.parse("multipart/form-data"),quantity);
         RequestBody pprice = RequestBody.create(MediaType.parse("multipart/form-data"),price);
         RequestBody pcat_id = RequestBody.create(MediaType.parse("multipart/form-data"),cat_id);
         RequestBody img = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part image = MultipartBody.Part.createFormData("image",file.getName(),img);
         view.showProgress();
-        RetroLib.getAPIServices().addProduct(tokenBody,pname,pquan,pprice,pcat_id,image).enqueue(new Callback<Product>() {
+        RetroLib.getAPIServices().addProduct(tokenBody,pname,pquan,pprice,pcat_id,image,pdesc).enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
                 if(response.isSuccessful()){

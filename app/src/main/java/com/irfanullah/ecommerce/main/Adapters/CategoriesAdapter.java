@@ -54,13 +54,37 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
         public CategoryView(@NonNull View itemView, Context context, final CategoryClickListener categoryClickListener, final ArrayList<Category> categories) {
             super(itemView);
+
             cat_image = itemView.findViewById(R.id.product_img);
             cat_title = itemView.findViewById(R.id.cat_title);
+
+            cat_title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    categoryClickListener.onCategoryClickListener(getAdapterPosition(),categories.get(getAdapterPosition()));
+                }
+            });
 
             cat_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     categoryClickListener.onCategoryClickListener(getAdapterPosition(),categories.get(getAdapterPosition()));
+                }
+            });
+
+            cat_image.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    categoryClickListener.onCategoryLongClickListener(getAdapterPosition(),categories.get(getAdapterPosition()));
+                    return true;
+                }
+            });
+
+            cat_title.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    categoryClickListener.onCategoryLongClickListener(getAdapterPosition(),categories.get(getAdapterPosition()));
+                    return true;
                 }
             });
         }
@@ -73,6 +97,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     public interface CategoryClickListener {
         void onCategoryClickListener(int position,Category cat);
+        void onCategoryLongClickListener(int position,Category cat);
     }
 
     public void setOnCategoryClickListener(CategoryClickListener clickListener){

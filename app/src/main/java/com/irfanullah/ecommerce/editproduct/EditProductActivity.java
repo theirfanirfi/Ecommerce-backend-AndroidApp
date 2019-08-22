@@ -23,7 +23,7 @@ import com.irfanullah.ecommerce.addproduct.AddProductPresenter;
 
 public class EditProductActivity extends AppCompatActivity implements EditProductLogic.View {
 
-    private EditText product_name,product_quantity, product_price;
+    private EditText product_name,product_quantity, product_price, product_description;
     private ImageView product_image_view;
     private Button chooseImageBtn,addProductBtn;
     private ProgressBar progressBar;
@@ -56,6 +56,7 @@ public class EditProductActivity extends AppCompatActivity implements EditProduc
         addProductBtn.setText("Update Product");
         progressBar = findViewById(R.id.progressBar);
         statusTextView = findViewById(R.id.statusTextView);
+        product_description = findViewById(R.id.product_description);
         getSupportActionBar().setTitle("Update Product");
         presenter = new EditProductPresenter(context,this,PRODUCT_ID);
         presenter.loadProductData();
@@ -69,7 +70,7 @@ public class EditProductActivity extends AppCompatActivity implements EditProduc
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_price.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri,hasImage);
+                presenter.validateInputFieldsAndMakeProductAddRequest(product_name.getText().toString(),product_price.getText().toString(),product_quantity.getText().toString(),CAT_ID,image_uri,hasImage,product_description.getText().toString());
             }
         });
 
@@ -107,6 +108,7 @@ public class EditProductActivity extends AppCompatActivity implements EditProduc
         product_name.setText(product.getPRODUCT_NAME());
         product_price.setText(product.getPRODUCT_PRICE());
         product_quantity.setText(product.getPRODUCT_QUANTITY());
+        product_description.setText(product.getPRODUCT_DESC());
         Glib.loadImage(context,product.getPRODUCT_IMAGE()).into(product_image_view);
         product_image_view.setVisibility(View.VISIBLE);
     }

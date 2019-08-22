@@ -1,7 +1,9 @@
 package com.irfanullah.ecommerce.main.Fragments.Categories;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +24,14 @@ import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Category;
 import com.irfanullah.ecommerce.R;
 import com.irfanullah.ecommerce.category.AddCategoryActivity;
+import com.irfanullah.ecommerce.editcategory.EditCategoryActivity;
+import com.irfanullah.ecommerce.editproduct.EditProductActivity;
 import com.irfanullah.ecommerce.main.Adapters.CategoriesAdapter;
 import com.irfanullah.ecommerce.products.ProductsActivity;
 
 import java.util.ArrayList;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class CategoriesFrag extends Fragment implements CategoriesLogic.View, CategoriesAdapter.CategoryClickListener {
     private CategoriesPresenter presenter;
@@ -32,6 +39,7 @@ public class CategoriesFrag extends Fragment implements CategoriesLogic.View, Ca
     private FloatingActionButton addCat;
     private RecyclerView rv;
     CategoriesAdapter categoriesAdapter;
+    ArrayList<Category> categories;
     private ProgressBar catsLoadingProgressBar;
     int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 888;
     @Nullable
@@ -45,6 +53,7 @@ public class CategoriesFrag extends Fragment implements CategoriesLogic.View, Ca
 
     @Override
     public void onCategoriesLoaded(ArrayList<Category> categories) {
+        this.categories = categories;
         categoriesAdapter.notifyAdapter(categories);
     }
 
@@ -141,5 +150,45 @@ public class CategoriesFrag extends Fragment implements CategoriesLogic.View, Ca
             SC.toastHere(context,"Error occurred in granting the storage permission. Please try again.");
         }
 
+    }
+
+    @Override
+    public void onCategoryLongClickListener(final int position, final Category cat) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Choose Action")
+                .setMessage("All products withing this category will also be deleted. Do you want to continue?")
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // deleteProduct(position,product.getPRODUCT_ID());
+                        Log.i("GULBADIN", "onClick: "+cat.getCAT_ID());
+                        presenter.makeDeleteCatRequest(position,cat.getCAT_ID());
+                    }
+                })
+
+                .setNegativeButton("Edit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent editCat = new Intent(context, EditCategoryActivity.class);
+                        editCat.putExtra("cat_id",cat.getCAT_ID());
+                        context.startActivity(editCat);
+                    }
+                })
+
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+
+    }
+
+
+    @Override
+    public void onCategoryDeleted(int position, Category category) {
+        this.categories.remove(position);
+        categoriesAdapter.notifyAdapter(this.categories);
     }
 }

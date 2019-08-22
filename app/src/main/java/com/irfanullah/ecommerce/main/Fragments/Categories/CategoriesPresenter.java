@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Category;
+import com.irfanullah.ecommerce.Models.Product;
 import com.irfanullah.ecommerce.Storage.Pref;
 import com.irfanullah.ecommerce.main.Adapters.CategoriesAdapter;
 
@@ -75,5 +76,37 @@ public class CategoriesPresenter implements CategoriesLogic.Presenter {
         rv.setHasFixedSize(true);
         rv.setAdapter(categoriesAdapter);
         return categoriesAdapter;
+    }
+
+    public void makeDeleteCatRequest(final int position,String cat_id){
+        RetroLib.getAPIServices().deleteCategory(Pref.getUser(context).getTOKEN(),cat_id).enqueue(new Callback<Category>() {
+            @Override
+            public void onResponse(Call<Category> call, Response<Category> response) {
+                if(response.isSuccessful()){
+                    Category cat = response.body();
+
+                    if(cat.isError()){
+                        view.onError(cat.getMessage());
+                    }else if(!cat.isAuthenticated()){
+                        view.onError("You are not logged in to perform this action.");
+                    }else if(cat.isFound()){
+                        if(cat.isDeleted()){
+                            view.onCategoryDeleted(position,cat);
+                        }else {
+                            view.onError(cat.getMessage());
+                        }
+                    }else {
+                        view.onError(cat.getMessage());
+                    }
+                }else {
+                    view.onError(response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Category> call, Throwable t) {
+                view.onError(t.getMessage());
+            }
+        });
     }
 }

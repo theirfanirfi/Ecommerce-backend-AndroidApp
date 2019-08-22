@@ -21,6 +21,9 @@
             android:name=".membercheckouts.MemberCheckoutsActivity"
             android:parentActivityName=".main.MainActivity" />
         <activity
+            android:name=".editcategory.EditCategoryActivity"
+            android:parentActivityName=".main.MainActivity" />
+        <activity
             android:name=".order.OrderActivity"
             android:parentActivityName=".main.MainActivity" />
         <activity

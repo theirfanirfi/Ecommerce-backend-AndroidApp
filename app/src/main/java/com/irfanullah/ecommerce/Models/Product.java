@@ -25,6 +25,11 @@ public class Product {
     @SerializedName("isDeleted") private boolean isDeleted;
     @SerializedName("products") private ArrayList<Product> PRODUCTS;
     @SerializedName("product") private Product PRODUCT;
+    @SerializedName("product_desc") private String PRODUCT_DESC;
+
+    public String getPRODUCT_DESC() {
+        return PRODUCT_DESC;
+    }
 
     public String getCHECKOUT_ID() {
         return CHECKOUT_ID;

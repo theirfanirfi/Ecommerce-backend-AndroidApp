@@ -16,7 +16,9 @@ public class Category {
     @SerializedName("isUploaded") private boolean isUploaded;
     @SerializedName("message") private String Message;
     @SerializedName("isAuthenticated") private boolean isAuthenticated;
+    @SerializedName("isDeleted") private boolean isDeleted;
     @SerializedName("cats") private ArrayList<Category> CATEGORIES;
+    @SerializedName("cat") private Category CATEGORY;
 
     public boolean isSaved() {
         return isSaved;
@@ -65,5 +67,13 @@ public class Category {
 
     public String getCAT_IMAGE() {
         return CAT_IMAGE;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public Category getCATEGORY() {
+        return CATEGORY;
     }
 }
