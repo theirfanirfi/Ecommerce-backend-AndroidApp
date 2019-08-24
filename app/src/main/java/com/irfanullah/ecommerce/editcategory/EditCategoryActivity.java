@@ -33,6 +33,7 @@ public class EditCategoryActivity extends AppCompatActivity implements EditCatLo
     private ProgressBar progressBar;
     private TextView statusTextView;
     private String CAT_ID = null;
+    private boolean isImageChanged = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,7 @@ public class EditCategoryActivity extends AppCompatActivity implements EditCatLo
         addCatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.validateFieldsAndMakeRequest(CAT_ID,cat_title_field.getText().toString(),image_uri);
+                presenter.validateFieldsAndMakeRequest(CAT_ID,cat_title_field.getText().toString(),image_uri,isImageChanged);
             }
         });
 
@@ -77,9 +78,7 @@ public class EditCategoryActivity extends AppCompatActivity implements EditCatLo
 
     @Override
     public void onCategoryUpdated() {
-        cat_title_field.setText("");
-        cat_image_view.setVisibility(View.GONE);
-        SC.toastHere(context,"Category Added.");
+        SC.toastHere(context,"Category Updated.");
     }
 
     @Override
@@ -103,6 +102,7 @@ public class EditCategoryActivity extends AppCompatActivity implements EditCatLo
             SC.logHere(image_uri.toString());
             cat_image_view.setImageURI(image_uri);
             cat_image_view.setVisibility(View.VISIBLE);
+            isImageChanged = true;
         }else {
             SC.toastHere(context,"Error occurred in seleting the image.");
         }

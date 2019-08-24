@@ -36,11 +36,15 @@ public class EditCatPresenter implements EditCatLogic.Presenter {
     }
 
     @Override
-    public void validateFieldsAndMakeRequest(String cat_id,String cat_title, Uri uri) {
-        if(cat_title.isEmpty() || uri == null){
+    public void validateFieldsAndMakeRequest(String cat_id,String cat_title, Uri uri, boolean isImageChanged) {
+        if(cat_title.isEmpty() || (uri == null && isImageChanged)){
             SC.toastHere(context,"None of the Fields can be empty.");
-        }else {
+        }else if(!cat_title.isEmpty() && !isImageChanged){
+            makeUpdateCategoryRequestWithOutImage(cat_id,cat_title);
+        }
+        else {
             if (Pref.isLoggedIn(this.context)){
+               // SC.toastHere(context,uri.toString());
                 makeUpdateCategoryRequest(cat_id,cat_title,uri);
             }else {
                 SC.toastHere(context,"You are not logged in.");
@@ -170,6 +174,45 @@ public class EditCatPresenter implements EditCatLogic.Presenter {
         });
     }
 
+    @Override
+    public void makeUpdateCategoryRequestWithOutImage(String cat_id, String cat_title) {
 
+        RequestBody tokenBody = RequestBody.create(MediaType.parse("multipart/form-data"),Pref.getUser(context).getTOKEN());
+        RequestBody title = RequestBody.create(MediaType.parse("multipart/form-data"),cat_title);
+        RequestBody cat_idd = RequestBody.create(MediaType.parse("multipart/form-data"),cat_id);
+//        RequestBody img = RequestBody.create(MediaType.parse("multipart/form-data"),file);
+//        MultipartBody.Part image = MultipartBody.Part.createFormData("image",file.getName(),img);
+        //show progress bar and status textview
+        view.showProgress();
 
+        RetroLib.getAPIServices().updateCate(tokenBody,cat_idd,title,null).enqueue(new Callback<Category>() {
+            @Override
+            public void onResponse(Call<Category> call, Response<Category> response) {
+                if(response.isSuccessful()){
+                    Category cat = response.body();
+                    SC.logHere(cat.getMessage());
+                    if(cat.isError() || !cat.isAuthenticated()){
+                        view.hideProgress();
+                        view.onError(cat.getMessage());
+                    }else if(cat.isSaved() && cat.isUploaded()){
+                        view.hideProgress();
+                        view.onCategoryUpdated();
+                    }else {
+                        view.hideProgress();
+                        view.onError(cat.getMessage());
+                    }
+                }else {
+                    view.hideProgress();
+                    view.onError(response.raw().toString());
+                    SC.logHere(response.raw().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Category> call, Throwable t) {
+                view.hideProgress();
+                view.onException(t.getMessage());
+            }
+        });
+    }
 }

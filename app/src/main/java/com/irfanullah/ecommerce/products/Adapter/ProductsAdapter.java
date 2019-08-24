@@ -36,6 +36,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         Product product = products.get(i);
 
         productView.product_name.setText(product.getPRODUCT_NAME());
+        productView.product_price.setText("$"+product.getPRODUCT_PRICE());
         productView.quantity.setText("Quan: "+product.getPRODUCT_QUANTITY()+" - Sold: "+product.getPRODUCT_SOLD());
 
         if(!product.getPRODUCT_IMAGE().isEmpty()){
@@ -51,13 +52,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public static class ProductView extends RecyclerView.ViewHolder {
 
         private ImageView product_image;
-        private TextView product_name,quantity;
+        private TextView product_name,quantity, product_price;
 
         public ProductView(@NonNull View itemView, final ProductClickListener productClickListener) {
             super(itemView);
             product_image = itemView.findViewById(R.id.product_img);
             product_name = itemView.findViewById(R.id.product_name);
             quantity = itemView.findViewById(R.id.quantityAndSold);
+            product_price = itemView.findViewById(R.id.productPrice);
 
             product_name.setOnClickListener(new View.OnClickListener() {
                 @Override

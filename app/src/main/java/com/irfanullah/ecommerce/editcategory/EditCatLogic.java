@@ -19,8 +19,9 @@ public interface EditCatLogic {
     }
 
     interface Presenter {
-        void validateFieldsAndMakeRequest(String cat_id,String cat_title, Uri uri);
+        void validateFieldsAndMakeRequest(String cat_id,String cat_title, Uri uri, boolean isImageChanged);
         Uri getImageUri(Context context, Bitmap inImage);
         void makeUpdateCategoryRequest(String cat_id, String cat_title, Uri uri);
+        void makeUpdateCategoryRequestWithOutImage(String cat_id, String cat_title);
     }
 }
