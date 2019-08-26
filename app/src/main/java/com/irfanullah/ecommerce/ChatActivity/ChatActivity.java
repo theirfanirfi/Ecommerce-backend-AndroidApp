@@ -29,10 +29,6 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView rv;
     private ChatAdapter chatAdapter;
     private Context context;
-    private final String LOGGEDIN_USER_INTENT_KEY = "loggedin_user_id";
-    private final String TO_CHAT_WITH_USER_INTENT_KEY = "to_chat_with_user_id";
-    private final String CHAT_ID_INTENT_KEY = "chat_id";
-    private int LOGGED_IN_USER = 0;
     private int CHAT_WITH_USER = 0;
     private int CHAT_ID = 0, START =0;
     private User user;
@@ -41,6 +37,7 @@ public class ChatActivity extends AppCompatActivity {
     private ImageView sendBtn;
     private Runnable runnable;
     private Handler handler;
+    private static final String TAG = "ChatActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +65,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String message = messageField.getText().toString();
+                SC.logHere(message+" : "+Integer.toString(CHAT_WITH_USER));
                 RetroLib.getAPIServices().sendMessage(user.getTOKEN(),Integer.toString(CHAT_WITH_USER),message).enqueue(new Callback<Messenger>() {
                     @Override
                     public void onResponse(Call<Messenger> call, Response<Messenger> response) {
@@ -78,7 +76,7 @@ public class ChatActivity extends AppCompatActivity {
                             }else {
                                 if(messenger.getIS_AUTHENTICATED()){
                                     if(messenger.getIS_SENT()){
-                                        SC.toastHere(context,messenger.getRESPONSE_MESSAGE());
+                                        //SC.toastHere(context,messenger.getRESPONSE_MESSAGE());
                                         messageField.setText("");
                                         START = 0;
                                         loadMessages();
@@ -107,8 +105,8 @@ public class ChatActivity extends AppCompatActivity {
     private void getExtras() {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            CHAT_WITH_USER = bundle.getInt(TO_CHAT_WITH_USER_INTENT_KEY);
-            CHAT_ID = bundle.getInt(CHAT_ID_INTENT_KEY);
+            CHAT_WITH_USER = bundle.getInt("user_id");
+            CHAT_ID = bundle.getInt("chat_id");
         }else {
             finish();
         }
@@ -140,6 +138,8 @@ public class ChatActivity extends AppCompatActivity {
         chatAdapter.notifyAdapter(messengerArrayList);
     }
     private void loadMessages(){
+        SC.logHere("CHAT ID: "+Integer.toString(CHAT_ID));
+      //  SC.iLogHere(CHAT_ID);
         RetroLib.getAPIServices().getMessages(user.getTOKEN(),Integer.toString(CHAT_ID)).enqueue(new Callback<Messenger>() {
             @Override
             public void onResponse(Call<Messenger> call, Response<Messenger> response) {
@@ -154,6 +154,7 @@ public class ChatActivity extends AppCompatActivity {
                                 //messengerArrayList.addAll(messenger.getMESSENGER());
                                 //recyclerViewSetup(messenger.getMESSENGER());
                                 notifyAdapter(messenger.getMESSENGER());
+                                SC.iLogHere(messenger.getMESSENGER().size());
                                 //if(START == 0) {
                                 //START++;
                                 rv.smoothScrollToPosition(messenger.getMESSENGER().size() > 0 ? messenger.getMESSENGER().size() - 1 : messenger.getMESSENGER().size());

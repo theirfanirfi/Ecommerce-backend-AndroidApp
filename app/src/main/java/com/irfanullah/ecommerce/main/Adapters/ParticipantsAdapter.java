@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.irfanullah.ecommerce.ChatActivity.ChatActivity;
 import com.irfanullah.ecommerce.Libraries.Glib;
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
@@ -66,9 +67,7 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
         private ImageView profile_image;
         private ConstraintLayout pLayout;
         private TextView unread_messages_count;
-        private final String LOGGEDIN_USER_INTENT_KEY = "loggedin_user_id";
-        private final String TO_CHAT_WITH_USER_INTENT_KEY = "to_chat_with_user_id";
-        private final String CHAT_ID_INTENT_KEY = "chat_id";
+
 
         public ParticipantsViewHolder(@NonNull View itemView,final Context context,final ArrayList<Participants> participantsArrayList) {
             super(itemView);
@@ -108,23 +107,14 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
                     User user = Pref.getUser(context);
                     Participants participants = participantsArrayList.get(position);
                     int CHAT_ID = participants.getCHAT_ID();
-                   // Intent chatAct = new Intent(context,ChatActivity.class);
+                    Intent chatAct = new Intent(context, ChatActivity.class);
+                        int CHAT_WITH_USER = participants.getUSER_ID();
+                        chatAct.putExtra("user_id",CHAT_WITH_USER);
+//                    SC.iLogHere(CHAT_WITH_USER);
+//                    SC.iLogHere(participants.getUSER_ID());
+                        chatAct.putExtra("chat_id",CHAT_ID);
+                        context.startActivity(chatAct);
 
-//                    if(user.getUSER_ID() == participants.getADMIN_ID()) {
-//                        int TO_CHAT_WITH_ID = participants.getUSER_ONE();
-//                        int LOGGEDIN_USER_ID = participants.getUSER_TWO();
-////                        chatAct.putExtra(LOGGEDIN_USER_INTENT_KEY,LOGGEDIN_USER_ID);
-////                        chatAct.putExtra(TO_CHAT_WITH_USER_INTENT_KEY,TO_CHAT_WITH_ID);
-////                        chatAct.putExtra(CHAT_ID_INTENT_KEY,CHAT_ID);
-////                        context.startActivity(chatAct);
-//                    }else {
-//                        int TO_CHAT_WITH_ID = participants.getUSER_ID();
-//                        int LOGGEDIN_USER_ID = participants.getADMIN_ID();
-////                        chatAct.putExtra(LOGGEDIN_USER_INTENT_KEY,LOGGEDIN_USER_ID);
-////                        chatAct.putExtra(TO_CHAT_WITH_USER_INTENT_KEY,TO_CHAT_WITH_ID);
-////                        chatAct.putExtra(CHAT_ID_INTENT_KEY,CHAT_ID);
-////                        context.startActivity(chatAct);
-//                    }
                 }
             });
         }

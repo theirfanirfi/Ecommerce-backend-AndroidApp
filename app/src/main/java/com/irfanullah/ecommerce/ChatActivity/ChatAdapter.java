@@ -38,7 +38,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder chatViewHolder, int i) {
         Messenger messenger = messengerArrayList.get(i);
-        if(loggedUser.getUSER_ID() == Integer.toString(messenger.getSENDER_ID())){
+        if(Integer.parseInt(loggedUser.getUSER_ID()) == messenger.getSENDER_ID()){
 
             chatViewHolder.sender.setText(messenger.getMESSAGE());
             chatViewHolder.sender.setVisibility(View.VISIBLE);

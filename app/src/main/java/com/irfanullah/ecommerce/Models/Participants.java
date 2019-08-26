@@ -13,7 +13,7 @@ public class Participants {
     private Boolean isError;
     @SerializedName("admin_id")
     private int ADMIN_ID;
-    @SerializedName("USER_ID")
+    @SerializedName("user_id")
     private int USER_ID;
     @SerializedName("name")
     private String USERNAME;
@@ -26,7 +26,7 @@ public class Participants {
     private String MESSAGE;
     @SerializedName("participants")
     private ArrayList<Participants> PARTICIPANTS;
-    @SerializedName("p_id")
+    @SerializedName("id")
     private int CHAT_ID;
 
     public int getCHAT_ID() {

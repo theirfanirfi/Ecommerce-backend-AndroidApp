@@ -19,17 +19,15 @@
 
     <EditText
         android:id="@+id/messageField"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:ems="10"
         android:hint="Type your message"
         android:inputType="textPersonName"
         android:textColor="@color/blackText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendBtn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
