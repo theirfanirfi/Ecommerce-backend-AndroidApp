@@ -4,6 +4,7 @@ import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Models.Appointment;
 import com.irfanullah.ecommerce.Models.Category;
 import com.irfanullah.ecommerce.Models.Gallery;
+import com.irfanullah.ecommerce.Models.Messenger;
 import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.Participants;
 import com.irfanullah.ecommerce.Models.Product;
@@ -129,6 +130,13 @@ public interface APIs {
     //chat
     @GET(BASE_URL+"auth/getparticipants")
     Call<Participants> getParticipants(@Query("token") String token);
+
+    @GET(BASE_URL+"auth/getmessages")
+    Call<Messenger> getMessages(@Query("token") String token, @Query("pid") String pid);
+
+    @GET(BASE_URL+"auth/sendmessage")
+    Call<Messenger> sendMessage(@Query("token") String token, @Query("id") String to_chat_with_id,@Query("msg") String msg);
+
 
 
 }
