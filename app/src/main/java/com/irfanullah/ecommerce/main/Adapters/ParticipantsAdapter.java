@@ -20,6 +20,7 @@ import com.irfanullah.ecommerce.Models.Participants;
 import com.irfanullah.ecommerce.Models.User;
 import com.irfanullah.ecommerce.R;
 import com.irfanullah.ecommerce.Storage.Pref;
+import com.irfanullah.ecommerce.UserAppointments.UserAppointmentsActivity;
 
 import java.util.ArrayList;
 
@@ -87,12 +88,9 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     Participants participants = participantsArrayList.get(position);
-                    int USER_ID = 0;
-                    User user = Pref.getUser(context);
-
-//                    Intent profileAct = new Intent(context, NLUserProfile.class);
-//                    profileAct.putExtra("user_id",USER_ID);
-//                    context.startActivity(profileAct);
+                    Intent intent = new Intent(context, UserAppointmentsActivity.class);
+                    intent.putExtra("member_id",Integer.toString(participants.getUSER_ID()));
+                    context.startActivity(intent);
                 }
             });
         }

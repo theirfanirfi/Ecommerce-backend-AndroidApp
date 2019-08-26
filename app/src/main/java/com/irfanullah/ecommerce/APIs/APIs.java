@@ -113,6 +113,10 @@ public interface APIs {
     @GET(BASE_URL+"auth/getdayappointments")
     Call<Appointment> getDayApts(@Query("token") String token,@Query("month") String month,@Query("year") String year,@Query("day") String day);
 
+    @GET(BASE_URL+"auth/getuserappointments")
+    Call<Appointment> getUserAppointments(@Query("token") String token,@Query("id") String user_id);
+
+
     //services
     @GET(BASE_URL+"auth/getservices")
     Call<Service> getservices(@Query("token") String token);

@@ -33,6 +33,12 @@ public class User {
     @SerializedName("time_diff_minutes") private String TIMEDIFF;
     @SerializedName("members") private ArrayList<User> MEMBERS;
 
+    @SerializedName("totalapp") private String TotalAppointments;
+
+
+    public String getTotalAppointments() {
+        return TotalAppointments;
+    }
 
     public int isBarber() {
         return isBarber;

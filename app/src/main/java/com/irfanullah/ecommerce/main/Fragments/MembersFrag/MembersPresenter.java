@@ -10,6 +10,7 @@ import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.User;
 import com.irfanullah.ecommerce.Storage.Pref;
+import com.irfanullah.ecommerce.UserAppointments.UserAppointmentsActivity;
 import com.irfanullah.ecommerce.main.Adapters.CategoriesAdapter;
 import com.irfanullah.ecommerce.main.Adapters.MembersAdapter;
 import com.irfanullah.ecommerce.membercheckouts.MemberCheckoutsActivity;
@@ -83,8 +84,8 @@ public class MembersPresenter implements MembersLogic.Presenter, MembersAdapter.
     @Override
     public void onMemberClick(int position, User user) {
         //view.onError(user.getUSERNAME());
-        Intent memberCheckoutsAct = new Intent(context, MemberCheckoutsActivity.class);
-        memberCheckoutsAct.putExtra("member_id",user.getUSER_ID());
-        context.startActivity(memberCheckoutsAct);
+        Intent userAppointments = new Intent(context, UserAppointmentsActivity.class);
+        userAppointments.putExtra("member_id",user.getUSER_ID());
+        context.startActivity(userAppointments);
     }
 }

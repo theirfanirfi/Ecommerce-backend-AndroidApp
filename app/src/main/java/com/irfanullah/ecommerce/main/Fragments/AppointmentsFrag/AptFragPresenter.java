@@ -1,6 +1,7 @@
 package com.irfanullah.ecommerce.main.Fragments.AppointmentsFrag;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Appointment;
 import com.irfanullah.ecommerce.Storage.Pref;
+import com.irfanullah.ecommerce.UserAppointments.UserAppointmentsActivity;
 
 import java.util.ArrayList;
 
@@ -104,7 +106,10 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
 
     @Override
     public void onAptClickListener(int position, Appointment apt) {
-        view.showError(apt.getUSERNAME());
+        //view.showError(apt.getUSERNAME());
+        Intent intent = new Intent(context, UserAppointmentsActivity.class);
+        intent.putExtra("member_id",apt.getUSER_ID());
+        context.startActivity(intent);
 
     }
 }

@@ -36,6 +36,7 @@ public class Appointment {
     @SerializedName("message") private String MESSAGE;
 
 
+
     public String getTIMERANGE() {
         return TIMERANGE;
     }

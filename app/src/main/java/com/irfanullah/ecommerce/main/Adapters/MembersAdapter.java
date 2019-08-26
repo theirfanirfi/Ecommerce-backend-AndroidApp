@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.irfanullah.ecommerce.Libraries.Glib;
 import com.irfanullah.ecommerce.Models.Order;
 import com.irfanullah.ecommerce.Models.User;
 import com.irfanullah.ecommerce.R;
@@ -38,6 +40,11 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
     public void onBindViewHolder(@NonNull MembersViewHolder membersViewHolder, int i) {
         User user = users.get(i);
         membersViewHolder.name.setText(user.getUSERNAME());
+        membersViewHolder.appointments.setText("Appointments: "+user.getTotalAppointments());
+
+        if(user.getPROFILE_IMAGE() != null){
+            Glib.loadImage(context,user.getPROFILE_IMAGE()).into(membersViewHolder.profile_image);
+        }
        // membersViewHolder.spent.setText(user.getUSERNAME());
     }
 
@@ -47,14 +54,16 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
     }
 
     public static class MembersViewHolder extends RecyclerView.ViewHolder {
-        TextView name,spent;
+        TextView name,appointments;
+        ImageView profile_image;
         ConstraintLayout constraintLayout;
 
         public MembersViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.username);
-           // spent = itemView.findViewById(R.id.spentForProducts);
+            appointments = itemView.findViewById(R.id.totalAppointments);
             constraintLayout = itemView.findViewById(R.id.constraintLayout);
+            profile_image = itemView.findViewById(R.id.profile_image);
 
             clickListeners();
 
