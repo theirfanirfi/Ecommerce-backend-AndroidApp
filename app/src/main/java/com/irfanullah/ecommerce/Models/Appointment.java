@@ -27,6 +27,7 @@ public class Appointment {
     @SerializedName("time_range") private String TIMERANGE;
 
     @SerializedName("apts") private ArrayList<Appointment> appointments;
+    @SerializedName("notifications") private ArrayList<Appointment> NOTIFICATIONS;
 
     @SerializedName("isFound") private boolean isFound;
     @SerializedName("isError") private boolean isError;
@@ -36,6 +37,9 @@ public class Appointment {
     @SerializedName("message") private String MESSAGE;
 
 
+    public ArrayList<Appointment> getNOTIFICATIONS() {
+        return NOTIFICATIONS;
+    }
 
     public String getTIMERANGE() {
         return TIMERANGE;
