@@ -112,4 +112,76 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
         context.startActivity(intent);
 
     }
+
+    @Override
+    public void declineAppointment(String id, final int position) {
+        RetroLib.getAPIServices().declineAppointment(Pref.getUser(context).getTOKEN(),id).enqueue(new Callback<Appointment>() {
+            @Override
+            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+                if(response.isSuccessful()){
+                    Appointment appointment = response.body();
+                    if(appointment.isError()){
+                        SC.toastHere(context,appointment.getMESSAGE());
+                    }else if(appointment.isDeclined()){
+                        view.appointmentDeclined(position);
+                        SC.toastHere(context,appointment.getMESSAGE());
+                    }else {
+                        SC.toastHere(context,appointment.getMESSAGE());
+
+                    }
+                }else {
+                    SC.toastHere(context,response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Appointment> call, Throwable t) {
+                SC.toastHere(context,t.getMessage());
+
+            }
+        });
+
+    }
+
+    @Override
+    public void confirmAppointment(String id, final int position) {
+        RetroLib.getAPIServices().confirmAppointment(Pref.getUser(context).getTOKEN(),id).enqueue(new Callback<Appointment>() {
+            @Override
+            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+                if(response.isSuccessful()){
+                    Appointment appointment = response.body();
+                    if(appointment.isError()){
+                        SC.toastHere(context,appointment.getMESSAGE());
+                    }else if(appointment.isConfirmed()){
+                       // view.appointmentConfirmed(position);
+                        view.showError(appointment.getMESSAGE());
+                    }else {
+                        SC.toastHere(context,appointment.getMESSAGE());
+
+                    }
+                }else {
+                    SC.toastHere(context,response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Appointment> call, Throwable t) {
+                SC.toastHere(context,t.getMessage());
+
+            }
+        });
+    }
+
+    @Override
+    public void onConfirmClickListener(int position, Appointment apt) {
+        confirmAppointment(apt.getAPPT_ID_(),position);
+    }
+
+    @Override
+    public void onDeclineClickListener(int position, Appointment apt) {
+
+        declineAppointment(apt.getAPPT_ID_(),position);
+    }
+
+
 }

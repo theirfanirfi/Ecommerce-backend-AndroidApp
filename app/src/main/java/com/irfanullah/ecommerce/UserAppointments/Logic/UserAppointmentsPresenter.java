@@ -66,4 +66,60 @@ public class UserAppointmentsPresenter implements Logic.Presenter {
             }
         });
     }
+
+    @Override
+    public void declineAppointment(String id, final int position) {
+        RetroLib.getAPIServices().declineAppointment(Pref.getUser(context).getTOKEN(),id).enqueue(new Callback<Appointment>() {
+            @Override
+            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+                if(response.isSuccessful()){
+                    Appointment appointment = response.body();
+                    if(appointment.isError()){
+                        SC.toastHere(context,appointment.getMESSAGE());
+                    }else if(appointment.isDeclined()){
+                        view.appointmentDeclined(position);
+                    }else {
+                        SC.toastHere(context,appointment.getMESSAGE());
+
+                    }
+                }else {
+                    SC.toastHere(context,response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Appointment> call, Throwable t) {
+                SC.toastHere(context,t.getMessage());
+
+            }
+        });
+    }
+
+    @Override
+    public void confirmAppointment(String id, final int position) {
+        RetroLib.getAPIServices().confirmAppointment(Pref.getUser(context).getTOKEN(),id).enqueue(new Callback<Appointment>() {
+            @Override
+            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+                if(response.isSuccessful()){
+                    Appointment appointment = response.body();
+                    if(appointment.isError()){
+                        SC.toastHere(context,appointment.getMESSAGE());
+                    }else if(appointment.isConfirmed()){
+                        view.appointmentConfirmed(position);
+                    }else {
+                        SC.toastHere(context,appointment.getMESSAGE());
+
+                    }
+                }else {
+                    SC.toastHere(context,response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Appointment> call, Throwable t) {
+                SC.toastHere(context,t.getMessage());
+
+            }
+        });
+    }
 }

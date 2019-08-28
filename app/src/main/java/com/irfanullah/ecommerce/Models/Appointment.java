@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Appointment {
     @SerializedName("id") private String APPOINTMENT_ID;
+    @SerializedName("app_id") private String APPT_ID_;
     @SerializedName("day") private String DAY;
     @SerializedName("month") private String MONTH;
     @SerializedName("year") private String YEAR;
@@ -20,6 +21,7 @@ public class Appointment {
     @SerializedName("created_at") private String CREATED_AT;
     @SerializedName("updated_at") private String UPDATED_AT;
     @SerializedName("formated_time") private String FORMATED_TIME;
+    @SerializedName("is_confirmed") private String IS_CONFIRMED;
 
     @SerializedName("profile_image") private String PROFILE_IMAGE;
     @SerializedName("name") private String USERNAME;
@@ -31,11 +33,16 @@ public class Appointment {
 
     @SerializedName("isFound") private boolean isFound;
     @SerializedName("isError") private boolean isError;
+    @SerializedName("isConfirmed") private boolean isConfirmed;
+    @SerializedName("isDeclined") private boolean isDeclined;
     @SerializedName("isAuthenticated") private boolean isAuthenticated;
 
 
     @SerializedName("message") private String MESSAGE;
 
+    public String getIS_CONFIRMED() {
+        return IS_CONFIRMED;
+    }
 
     public ArrayList<Appointment> getNOTIFICATIONS() {
         return NOTIFICATIONS;
@@ -131,5 +138,17 @@ public class Appointment {
 
     public String getFORMATED_TIME() {
         return FORMATED_TIME;
+    }
+
+    public boolean isConfirmed() {
+        return isConfirmed;
+    }
+
+    public boolean isDeclined() {
+        return isDeclined;
+    }
+
+    public String getAPPT_ID_() {
+        return APPT_ID_;
     }
 }

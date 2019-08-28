@@ -13,6 +13,8 @@ public interface AptFragLogic {
         void dayAppointmentsLoaded(ArrayList<Appointment> appointments);
         void noAppointmentsForTheDay(String message);
         void showError(String message);
+        void appointmentConfirmed(int position);
+        void appointmentDeclined(int position);
 
     }
 
@@ -20,6 +22,9 @@ public interface AptFragLogic {
         void makeMonthAppointmentsRequest(String year,String month);
         DayAppointmentsAdapter setUpRvAndReturnAdapter(RecyclerView rv);
         void loadAppointmentsForTheClickedDay(String year,String month,String day);
+
+        void declineAppointment(String id, int position);
+        void confirmAppointment(String id, int position);
 
     }
 }

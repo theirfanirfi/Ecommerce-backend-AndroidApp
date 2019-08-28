@@ -53,7 +53,15 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
           Glib.loadImage(context,pt.getUSER_PROFILE_IMAGE()).into(participantsViewHolder.profile_image);
         }
 
-      //  loadLastMessageAndUnReadMessagesCount(participants, participantsViewHolder);
+        participantsViewHolder.last_message.setText(pt.getLAST_MESSAGE());
+
+        if(pt.getUNREAD_MSG_COUNT() > 0){
+            participantsViewHolder.unread_messages_count.setText(Integer.toString(pt.getUNREAD_MSG_COUNT()));
+            participantsViewHolder.unread_messages_count.setVisibility(View.VISIBLE);
+        }else {
+            participantsViewHolder.unread_messages_count.setVisibility(View.GONE);
+
+        }
 
     }
 
@@ -123,56 +131,7 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
         notifyDataSetChanged();
     }
 
-//    private void loadLastMessageAndUnReadMessagesCount(final Participants participants, final ParticipantsViewHolder participantsViewHolder){
-//        final User user = Pref.getUser(context);
-//        RetroLib.getAPIServices().getUnReadAndLast(user.getTOKEN(),participants.getCHAT_ID()).enqueue(new Callback<Messenger>() {
-//            @Override
-//            public void onResponse(Call<Messenger> call, Response<Messenger> response) {
-//                if(response.isSuccessful()){
-//                    Messenger msg = response.body();
-//                    if(msg.getIS_AUTHENTICATED()){
-//                        if(msg.getIS_ERROR()){
-//                            //RMsg.logHere(msg.getMESSAGE());
-//                        }else {
-//                            Messenger last_msg = msg.getLAST_MESSAGE();
-//                            int count = msg.getCOUNT_READ_MESSAGES();
-//
-//                            if(msg.getLAST_MESSAGE_COUNT() > 0) {
-//                                String who_sent = "";
-//                                if(msg.getSENDER_ID() == user.getUSER_ID()){
-//                                    who_sent = "Me: ";
-//                                }else {
-//                                    if(user.getUSER_ID() == participants.getUSER_ONE()) {
-//                                        who_sent = participants.getUSER_TWO_NAME() + ": ";
-//                                    }else {
-//                                        who_sent = participants.getUSER_ONE_NAME() + ": ";
-//                                    }
-//                                }
-//
-//                                participantsViewHolder.last_message.setText(who_sent+last_msg.getMESSAGE());
-//                                participantsViewHolder.last_message.setVisibility(View.VISIBLE);
-//                            }
-//
-//
-//                            if(msg.getCOUNT_READ_MESSAGES() > 0) {
-//                                participantsViewHolder.unread_messages_count.setText(Integer.toString(count));
-//                                participantsViewHolder.unread_messages_count.setVisibility(View.VISIBLE);
-//                            }
-//                        }
-//                    }else {
-//                        SC.logHere(msg.getMESSAGE());
-//                    }
-//                }else {
-//                    SC.logHere(response.raw().toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Messenger> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+
 
 }
 

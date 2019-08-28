@@ -12,10 +12,14 @@ public interface Logic {
         void onAppointmentsLoaded(ArrayList<Appointment> appointments);
         void onMessage(String msg);
         void onUserLoaded(String username);
+        void appointmentConfirmed(int position);
+        void appointmentDeclined(int position);
     }
 
     interface Presenter {
         UserAppointmentsAdapter configRecyclerView(RecyclerView rv);
+        void declineAppointment(String id, int position);
+        void confirmAppointment(String id, int position);
         void fetchUserAppointments(String user_id);
     }
 }

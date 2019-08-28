@@ -14,7 +14,7 @@ import com.irfanullah.ecommerce.UserAppointments.Logic.UserAppointmentsPresenter
 
 import java.util.ArrayList;
 
-public class UserAppointmentsActivity extends AppCompatActivity implements Logic.View {
+public class UserAppointmentsActivity extends AppCompatActivity implements Logic.View, UserAppointmentsAdapter.AppointmentClickListenr {
 
     private UserAppointmentsAdapter userAppointmentsAdapter;
     private RecyclerView rv;
@@ -56,5 +56,35 @@ public class UserAppointmentsActivity extends AppCompatActivity implements Logic
         userAppointmentsAdapter = presenter.configRecyclerView(rv);
 
         presenter.fetchUserAppointments(USER_ID);
+    }
+
+
+    @Override
+    public void onConfirmClickListener(int position, Appointment apt) {
+        SC.logHere(apt.getAPPOINTMENT_ID());
+        presenter.confirmAppointment(apt.getAPPT_ID_(),position);
+    }
+
+    @Override
+    public void onDeclineClickListener(int position, Appointment apt) {
+        presenter.declineAppointment(apt.getAPPT_ID_(),position);
+
+    }
+
+    @Override
+    public void appointmentConfirmed(int position) {
+        appointments.remove(position);
+        userAppointmentsAdapter.notifyAdapter(appointments);
+    }
+
+    @Override
+    public void appointmentDeclined(int position) {
+        appointments.remove(position);
+        userAppointmentsAdapter.notifyAdapter(appointments);
+    }
+
+    @Override
+    public void onAptClickListener(int position, Appointment apt) {
+
     }
 }

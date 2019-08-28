@@ -29,6 +29,17 @@ public class Participants {
     @SerializedName("id")
     private int CHAT_ID;
 
+    @SerializedName("last_msg") private String LAST_MESSAGE;
+    @SerializedName("count") private int UNREAD_MSG_COUNT;
+
+    public String getLAST_MESSAGE() {
+        return LAST_MESSAGE;
+    }
+
+    public int getUNREAD_MSG_COUNT() {
+        return UNREAD_MSG_COUNT;
+    }
+
     public int getCHAT_ID() {
         return CHAT_ID;
     }

@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Appointment;
 import com.irfanullah.ecommerce.R;
 
@@ -32,9 +34,12 @@ public class AppointmentsFrag extends Fragment implements AptFragLogic.View{
     CompactCalendarView compactCalendarView;
     DayAppointmentsAdapter dayAppointmentsAdapter;
     RecyclerView rv;
+    TextView monthTitleTextView;
+    String[] months = {"Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"};
     Calendar calendar;
     int thisYear = 0;
     int thisMonth = 0;
+    ArrayList<Appointment> appointments;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,6 +52,7 @@ public class AppointmentsFrag extends Fragment implements AptFragLogic.View{
     private void setup(View view) {
         presenter = new AptFragPresenter(this,getContext());
         rv = view.findViewById(R.id.viewDayAppointmentsInRV);
+        monthTitleTextView = view.findViewById(R.id.monthTitleTextView);
         Date c = Calendar.getInstance().getTime();
         int d = c.getDate();
         int m = c.getMonth()+1;
@@ -78,6 +84,11 @@ public class AppointmentsFrag extends Fragment implements AptFragLogic.View{
         compactCalendarView.setCurrentDate(date);
         compactCalendarView.showContextMenu();
 
+        calendar = Calendar.getInstance();
+        thisYear = calendar.get(Calendar.YEAR);
+        int mm = calendar.get(Calendar.MONTH);
+
+        monthTitleTextView.setText(months[mm]+", "+Integer.toString(thisYear));
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
@@ -93,9 +104,9 @@ public class AppointmentsFrag extends Fragment implements AptFragLogic.View{
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                int nextMonth = firstDayOfNewMonth.getMonth()+1;
+                int nextMonth = firstDayOfNewMonth.getMonth();
                 int thisYear = calendar.get(Calendar.YEAR);
-
+                monthTitleTextView.setText(months[nextMonth]+", "+Integer.toString(thisYear));
                 presenter.makeMonthAppointmentsRequest(Integer.toString(thisYear),Integer.toString(nextMonth));
 
                 //Log.d(TAG, "Month was scrolled to: " + firstDayOfNewMonth.getMonth()+1);
@@ -126,6 +137,7 @@ public class AppointmentsFrag extends Fragment implements AptFragLogic.View{
 
     @Override
     public void dayAppointmentsLoaded(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
         dayAppointmentsAdapter.notifyAdapter(appointments);
     }
 
@@ -137,5 +149,18 @@ public class AppointmentsFrag extends Fragment implements AptFragLogic.View{
     @Override
     public void showError(String message) {
         Toast.makeText(getContext(),message,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void appointmentConfirmed(int position) {
+        //appointments.remove(position);
+        //dayAppointmentsAdapter.notifyAdapter(appointments);
+        //SC.toastHere(getContext(),"Appointment confirmed and the user is notified through SMS.");
+    }
+
+    @Override
+    public void appointmentDeclined(int position) {
+        appointments.remove(position);
+        dayAppointmentsAdapter.notifyAdapter(appointments);
     }
 }

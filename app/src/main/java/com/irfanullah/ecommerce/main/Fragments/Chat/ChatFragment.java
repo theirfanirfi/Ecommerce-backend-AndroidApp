@@ -114,23 +114,20 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
     @Override
     public boolean onQueryTextChange(String s) {
         //  RMsg.toastHere(context,"working");
-        //filterChat(s);
+        filterChat(s);
         return false;
     }
 
-//    private void filterChat(String query){
-//        ArrayList<Participants> filteredArrayList = new ArrayList<>();
-//        for(int i = 0;i<participantsArrayList.size();i++){
-//            Participants participants = participantsArrayList.get(i);
-//            if(participants.getUSER_ONE_ID() != user.getUSER_ID() && participants.getUSER_ONE_NAME().toLowerCase().contains(query.toLowerCase())){
-//                filteredArrayList.add(participants);
-//                participantsAdapter.notifyAdapter(filteredArrayList);
-//            }else if(participants.getUSER_TWO_ID() != user.getUSER_ID() && participants.getUSER_TWO_NAME().toLowerCase().contains(query.toLowerCase())){
-//                filteredArrayList.add(participants);
-//                participantsAdapter.notifyAdapter(filteredArrayList);
-//            }else {
-//                participantsAdapter.notifyAdapter(filteredArrayList);
-//            }
-//        }
-//    }
+    private void filterChat(String query){
+        ArrayList<Participants> filteredArrayList = new ArrayList<>();
+        for(int i = 0;i<participantsArrayList.size();i++){
+            Participants participants = participantsArrayList.get(i);
+            if(participants.getUSERNAME().toLowerCase().contains(query.toLowerCase())){
+                filteredArrayList.add(participants);
+                participantsAdapter.notifyAdapter(filteredArrayList);
+            }else {
+                participantsAdapter.notifyAdapter(filteredArrayList);
+            }
+        }
+    }
 }

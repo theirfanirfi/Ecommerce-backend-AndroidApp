@@ -17,11 +17,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".appointmentsnotifications.AppointmentsNotificationActivity" android:parentActivityName=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".UserAppointments.UserAppointmentsActivity" android:parentActivityName=".main.MainActivity"></activity>
         <activity
@@ -65,7 +61,11 @@
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/FullScreenAppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".main.MainActivity" />
     </application>

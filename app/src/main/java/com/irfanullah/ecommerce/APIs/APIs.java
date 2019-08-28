@@ -141,8 +141,15 @@ public interface APIs {
     @GET(BASE_URL+"auth/sendmessage")
     Call<Messenger> sendMessage(@Query("token") String token, @Query("id") String to_chat_with_id,@Query("msg") String msg);
 
+    //notifications + appointments
     @GET(BASE_URL+"auth/notifications")
     Call<Appointment> getAppointmentsNotifications(@Query("token") String token);
+
+    @GET(BASE_URL+"auth/confirmapt")
+    Call<Appointment> confirmAppointment(@Query("token") String token,@Query("id") String id);
+
+    @GET(BASE_URL+"auth/declineapt")
+    Call<Appointment> declineAppointment(@Query("token") String token,@Query("id") String id);
 
 
 }
