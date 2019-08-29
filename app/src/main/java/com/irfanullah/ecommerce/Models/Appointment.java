@@ -37,8 +37,20 @@ public class Appointment {
     @SerializedName("isDeclined") private boolean isDeclined;
     @SerializedName("isAuthenticated") private boolean isAuthenticated;
 
+    @SerializedName("chat_count") private int CHAT_COUNT;
+    @SerializedName("appointments_count") private int APPOINTMENTS_COUNT;
+
 
     @SerializedName("message") private String MESSAGE;
+
+
+    public int getCHAT_COUNT() {
+        return CHAT_COUNT;
+    }
+
+    public int getAPPOINTMENTS_COUNT() {
+        return APPOINTMENTS_COUNT;
+    }
 
     public String getIS_CONFIRMED() {
         return IS_CONFIRMED;

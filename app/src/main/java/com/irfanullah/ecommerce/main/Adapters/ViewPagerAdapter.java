@@ -9,6 +9,7 @@ import com.irfanullah.ecommerce.main.Fragments.Categories.CategoriesFrag;
 import com.irfanullah.ecommerce.main.Fragments.Chat.ChatFragment;
 import com.irfanullah.ecommerce.main.Fragments.Gallery.GalleryFrag;
 import com.irfanullah.ecommerce.main.Fragments.MembersFrag.MembersFrag;
+import com.irfanullah.ecommerce.main.Fragments.NotificationsFrag.NotificationsFrag;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -20,16 +21,20 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
 
         switch (i){
+
             case 0:
+                NotificationsFrag notificationsFrag = new NotificationsFrag();
+                return notificationsFrag;
+            case 1:
                 GalleryFrag galleryFrag = new GalleryFrag();
                 return galleryFrag;
-            case 1:
+            case 2:
                 AppointmentsFrag nOrders = new AppointmentsFrag();
                 return nOrders;
-            case 2:
+            case 3:
                 ChatFragment chatFragment = new ChatFragment();
                 return chatFragment;
-            case 3:
+            case 4:
                 MembersFrag membersFrag = new MembersFrag();
                 return membersFrag;
         }
@@ -39,6 +44,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 }

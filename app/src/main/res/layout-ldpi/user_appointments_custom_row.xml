@@ -7,6 +7,8 @@
     android:layout_height="wrap_content"
     android:padding="4dp"
     android:layout_margin="4dp"
+    android:background="@color/whiteColor"
+
     >
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"

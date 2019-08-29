@@ -88,4 +88,9 @@ public class AppointmentsNotificationActivity extends AppCompatActivity implemen
         appointments.remove(position);
         appointmentsAdapter.notifyAdapter(appointments);
     }
+
+    @Override
+    public void noNewNotificationsFound() {
+
+    }
 }

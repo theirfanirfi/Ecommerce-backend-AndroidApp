@@ -23,10 +23,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.design.widget.TabItem
-            android:id="@+id/cats_tab"
+            android:id="@+id/notifications_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cats_tab_title" />
+
+        <android.support.design.widget.TabItem
+        android:id="@+id/cats_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cats_tab_title" />
 
         <android.support.design.widget.TabItem
             android:id="@+id/new_orders_tab"

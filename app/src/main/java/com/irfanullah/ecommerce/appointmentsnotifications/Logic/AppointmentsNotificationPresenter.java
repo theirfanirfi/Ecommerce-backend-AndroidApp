@@ -106,7 +106,8 @@ public class AppointmentsNotificationPresenter implements Logic.Presenter{
                     }else if(appointment.isFound()){
                         view.onAppointmentsLoaded(appointment.getNOTIFICATIONS());
                     }else {
-                        SC.toastHere(context,appointment.getMESSAGE());
+                       // SC.toastHere(context,appointment.getMESSAGE());
+                        view.noNewNotificationsFound();
 
                     }
                 }else {

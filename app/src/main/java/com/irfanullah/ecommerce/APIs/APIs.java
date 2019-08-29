@@ -151,5 +151,8 @@ public interface APIs {
     @GET(BASE_URL+"auth/declineapt")
     Call<Appointment> declineAppointment(@Query("token") String token,@Query("id") String id);
 
+    @GET(BASE_URL+"auth/getcounts")
+    Call<Appointment> getCountForChatAndNotificationsTab(@Query("token") String token);
+
 
 }

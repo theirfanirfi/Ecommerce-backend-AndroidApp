@@ -37,6 +37,8 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
     private ArrayList<Participants> participantsArrayList;
     SearchView searchView;
     User user;
+    private boolean isVisible;
+    private boolean isStarted;
     public ChatFragment() {
     }
 
@@ -129,5 +131,27 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
                 participantsAdapter.notifyAdapter(filteredArrayList);
             }
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        isStarted = true;
+        if (isVisible)
+            getParticipants(); //your request method
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        isStarted = false;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isVisible = isVisibleToUser;
+        if (isVisible && isStarted)
+            getParticipants();
     }
 }

@@ -14,6 +14,7 @@ public interface Logic {
         void onMessage(String msg);
         void appointmentConfirmed(int position);
         void appointmentDeclined(int position);
+        void noNewNotificationsFound();
     }
 
     interface Presenter {
