@@ -51,7 +51,7 @@ public class NotificationServiceLowerVesions extends Service {
                 @Override
                 public void run() {
                     checkNotification();
-                    handler.postDelayed(this,10000);
+                    handler.postDelayed(this,120000);
                 }
             };
 
