@@ -54,6 +54,7 @@ public class UserAppointmentsActivity extends AppCompatActivity implements Logic
         rv = findViewById(R.id.userAppointmentsRecyclerView);
         username = findViewById(R.id.username);
         userAppointmentsAdapter = presenter.configRecyclerView(rv);
+        userAppointmentsAdapter.setOnAppointmentClickListener(this);
 
         presenter.fetchUserAppointments(USER_ID);
     }
