@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,8 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
     }
 
     public void getParticipants(){
+        SC.toastHere(getContext(),"participants being loaded.");
+        Log.i("TOKENCHAT",Pref.getUser(context).getTOKEN());
         RetroLib.getAPIServices().getParticipants(Pref.getUser(context).getTOKEN()).enqueue(new Callback<Participants>() {
             @Override
             public void onResponse(Call<Participants> call, Response<Participants> response) {
@@ -90,13 +93,13 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
 //                    }
 
                 }else {
-                    // RMsg.toastHere(getContext(),RMsg.REQ_ERROR_MESSAGE);
+                    SC.toastHere(getContext(),"Request error");
                 }
             }
 
             @Override
             public void onFailure(Call<Participants> call, Throwable t) {
-                SC.toastHere(getContext(),t.toString());
+                SC.toastHere(getContext(),t.toString()+" my made error ");
             }
         });
 

@@ -138,7 +138,7 @@ public class ChatActivity extends AppCompatActivity {
         chatAdapter.notifyAdapter(messengerArrayList);
     }
     private void loadMessages(){
-        SC.logHere("CHAT ID: "+Integer.toString(CHAT_ID));
+        //SC.logHere("CHAT ID: "+Integer.toString(CHAT_ID));
       //  SC.iLogHere(CHAT_ID);
         RetroLib.getAPIServices().getMessages(user.getTOKEN(),Integer.toString(CHAT_ID)).enqueue(new Callback<Messenger>() {
             @Override

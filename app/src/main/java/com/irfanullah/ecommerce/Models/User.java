@@ -1,6 +1,7 @@
 package com.irfanullah.ecommerce.Models;
 
 import com.google.gson.annotations.SerializedName;
+import com.irfanullah.ecommerce.Libraries.RetroLib;
 
 import java.util.ArrayList;
 
@@ -130,6 +131,14 @@ public class User {
     }
 
     public String getPROFILE_IMAGE() {
-        return PROFILE_IMAGE;
+        if(PROFILE_IMAGE == null){
+            return PROFILE_IMAGE;
+        }else {
+            if (PROFILE_IMAGE.contains("http")) {
+                return PROFILE_IMAGE;
+            } else {
+                return RetroLib.ASSET_URL + "profile/" + PROFILE_IMAGE;
+            }
+        }
     }
 }

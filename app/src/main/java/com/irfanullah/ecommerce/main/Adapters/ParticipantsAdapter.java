@@ -49,7 +49,7 @@ public class ParticipantsAdapter extends RecyclerView.Adapter<ParticipantsAdapte
     public void onBindViewHolder(@NonNull ParticipantsViewHolder participantsViewHolder, int i) {
         Participants pt = participantsArrayList.get(i);
         participantsViewHolder.chatWithUsername.setText(pt.getUSERNAME());
-        if(!pt.getUSER_PROFILE_IMAGE().isEmpty()){
+        if(pt.getUSER_PROFILE_IMAGE() != null && !pt.getUSER_PROFILE_IMAGE().isEmpty()){
           Glib.loadImage(context,pt.getUSER_PROFILE_IMAGE()).into(participantsViewHolder.profile_image);
         }
 

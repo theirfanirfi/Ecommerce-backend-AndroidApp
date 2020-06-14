@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.irfanullah.ecommerce.Libraries.Glib;
 import com.irfanullah.ecommerce.Libraries.TimeDiff;
 import com.irfanullah.ecommerce.Models.Messenger;
 import com.irfanullah.ecommerce.Models.User;
@@ -46,13 +48,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             chatViewHolder.sender_time.setVisibility(View.VISIBLE);
             chatViewHolder.reciever.setVisibility(View.GONE);
             chatViewHolder.reciever_time.setVisibility(View.GONE);
+            chatViewHolder.profile_image.setVisibility(View.GONE);
 
         }else {
 
             chatViewHolder.reciever.setText(messenger.getMESSAGE());
+//            Glib.loadImage(context,messenger.getP)
             chatViewHolder.reciever.setVisibility(View.VISIBLE);
             chatViewHolder.reciever_time.setText(TimeDiff.getTimeDifference(messenger.getCREATED_AT()));
             chatViewHolder.reciever_time.setVisibility(View.VISIBLE);
+            chatViewHolder.profile_image.setVisibility(View.VISIBLE);
             chatViewHolder.sender.setVisibility(View.GONE);
             chatViewHolder.sender_time.setVisibility(View.GONE);
         }
@@ -65,9 +70,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     public static class ChatViewHolder extends RecyclerView.ViewHolder {
         private TextView sender,reciever,sender_time, reciever_time;
+        private ImageView profile_image;
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             sender = itemView.findViewById(R.id.sender);
+            profile_image = itemView.findViewById(R.id.profile_image);
             reciever = itemView.findViewById(R.id.reciever);
             sender_time = itemView.findViewById(R.id.senderTime);
             reciever_time = itemView.findViewById(R.id.recieverTime);

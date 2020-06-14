@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityLogic
             i = new Intent(this, NotificationServiceLowerVesions.class);
         }
 
-        startService(i);
+       // startService(i);
 
         initObjects();
     }
