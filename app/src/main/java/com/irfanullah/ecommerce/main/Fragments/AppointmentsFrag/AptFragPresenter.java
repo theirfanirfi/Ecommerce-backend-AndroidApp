@@ -81,7 +81,7 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
                         if(appointment.isError()){
                             view.showError(appointment.getMESSAGE());
                         }else if(appointment.isFound()){
-                            SC.toastHere(context,"found");
+//                            SC.toastHere(context,"found");
                             view.dayAppointmentsLoaded(appointment.getAppointments());
                         }else {
                             appointments = new ArrayList<>();

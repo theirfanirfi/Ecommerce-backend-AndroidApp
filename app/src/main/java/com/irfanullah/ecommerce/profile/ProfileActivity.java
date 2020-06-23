@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +21,8 @@ import java.util.Calendar;
 public class ProfileActivity extends AppCompatActivity implements ProfileLogic.View {
     private ProfilePresenter presenter;
     private EditText name,email,currentPass,newPass,service_time;
-    private Button saveBtn, openingHour, closingHour;
+    private Button saveBtn;
+    Button openingHour, closingHour;
     private Context context;
     String openingHourTime, openingHourMinutes,closingHourTime, closingHourMinutes;
     @Override
@@ -39,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
         saveBtn = findViewById(R.id.saveChangesBtn);
         openingHour = findViewById(R.id.openingHour);
         closingHour = findViewById(R.id.closingHour);
-        service_time = findViewById(R.id.time_diff);
+//        service_time = findViewById(R.id.time_diff);
         presenter = new ProfilePresenter(this,context);
         presenter.loadProfile();
 
@@ -112,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
         email.setText(user.getEMAIL());
         openingHour.setText(user.getOPENINGTIME());
         closingHour.setText(user.getCLOSINGTIME());
-        service_time.setText(user.getTIMEDIFF());
+//        service_time.setText(user.getTIMEDIFF());
     }
 
     @Override
@@ -128,5 +130,21 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
     @Override
     public void onUpdated() {
         SC.toastHere(context,"Profile Updated.");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

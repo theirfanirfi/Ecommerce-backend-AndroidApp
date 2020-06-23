@@ -67,10 +67,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
 //                }
 //            });
 
-            image.setOnClickListener(new View.OnClickListener() {
+            image.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void onClick(View v) {
+                public boolean onLongClick(View v) {
                     galleryImageClickListener.onImageClickListener(getAdapterPosition(),gallery.get(getAdapterPosition()));
+                    return true;
                 }
             });
         }

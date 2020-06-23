@@ -30,7 +30,6 @@
                 android:layout_gravity="center"
                 />
 
-
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
@@ -147,7 +146,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Shipment duration (in days)"
+                android:text="Opening and closing time"
                 android:textColor="@color/borderColor"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
@@ -172,17 +171,7 @@
                 android:layout_margin="6dp"
                 android:background="@drawable/textfieldorangewithwhite"
                 android:hint="Closing Time"
-                android:inputType="time"
-                android:padding="12dp"
-                android:textColor="@color/blackText" />
 
-            <EditText
-                android:id="@+id/time_diff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:background="@drawable/textfieldorangewithwhite"
-                android:hint="Service Time in minutes e.g 30, 40,50"
                 android:inputType="time"
                 android:padding="12dp"
                 android:textColor="@color/blackText" />

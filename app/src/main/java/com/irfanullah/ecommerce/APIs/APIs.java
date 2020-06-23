@@ -107,6 +107,9 @@ public interface APIs {
     @GET(BASE_URL+"auth/getgallery")
     Call<Gallery> getGallery(@Query("token") String token);
 
+    @GET(BASE_URL+"auth/deletegallery")
+    Call<Gallery> deleteGalleryPic(@Query("token") String token, @Query("id") String id);
+
     //appointments
     @GET(BASE_URL+"auth/getmonthappointments")
     Call<Appointment> getMonthApts(@Query("token") String token,@Query("month") String month,@Query("year") String year);

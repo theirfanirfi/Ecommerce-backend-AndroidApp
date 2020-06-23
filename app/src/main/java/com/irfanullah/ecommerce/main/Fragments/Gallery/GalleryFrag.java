@@ -1,9 +1,12 @@
 package com.irfanullah.ecommerce.main.Fragments.Gallery;
 
 import android.Manifest;
+
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,11 +14,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
@@ -28,6 +34,7 @@ import com.irfanullah.ecommerce.main.Adapters.CategoriesAdapter;
 import com.irfanullah.ecommerce.main.Adapters.GalleryAdapter;
 import com.irfanullah.ecommerce.main.Fragments.Categories.CategoriesLogic;
 import com.irfanullah.ecommerce.main.Fragments.Categories.CategoriesPresenter;
+import com.irfanullah.ecommerce.main.MainActivity;
 import com.irfanullah.ecommerce.products.ProductsActivity;
 
 import java.util.ArrayList;
@@ -109,9 +116,27 @@ public class GalleryFrag extends Fragment implements GalleryLogic.View, GalleryA
 
 
     @Override
-    public void onImageClickListener(int position, Gallery gallery) {
-        SC.snackHere(getView(),gallery.getIMAGE_TITLE());
-        SC.toastHere(context,gallery.getIMAGE_TITLE());
+    public void onImageClickListener(int position, final Gallery gallery) {
+//        SC.snackHere(getView(),gallery.getIMAGE_TITLE());
+//        SC.toastHere(context,gallery.getGALLERY_ID());
+
+        TextView textView = new TextView(context);
+        textView.setText("Do you want to delete this image?");
+        textView.setPadding(20, 30, 20, 30);
+        textView.setTextSize(20F);
+        textView.setBackgroundColor(Color.WHITE);
+        textView.setTextColor(Color.BLACK);
+        new AlertDialog.Builder(context)
+                .setCustomTitle(textView)
+                .setMessage("Do you want to delete this image?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        presenter.deleteGalleryPicture(gallery.getGALLERY_ID());
+                    }})
+                .setNegativeButton("Cancel", null).show();
+
     }
 
     public void requestStoragePermission(Context context){
@@ -154,6 +179,12 @@ public class GalleryFrag extends Fragment implements GalleryLogic.View, GalleryA
         }else {
             SC.toastHere(context,"Error occurred in granting the storage permission. Please try again.");
         }
+
+    }
+
+    @Override
+    public void onGalleryImageDeleted(String message) {
+        SC.toastHere(context,message);
 
     }
 }

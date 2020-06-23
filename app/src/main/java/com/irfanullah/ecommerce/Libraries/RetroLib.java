@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroLib {
-    public final static String IP = "192.168.10.4";
+    public final static String IP = "192.168.10.5";
 //    public final static String IP = "techgiantz.com";
     public final static String BASE_URL = "http://"+IP+"/barber/public/api/";
     public final static String ASSET_URL = "http://"+IP+"/barber/public/uploads/";

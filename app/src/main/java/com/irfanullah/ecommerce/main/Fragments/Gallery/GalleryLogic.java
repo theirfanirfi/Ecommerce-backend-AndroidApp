@@ -17,11 +17,13 @@ public interface GalleryLogic {
         void hideProgressBar();
         void showProgressBar();
         void onError(String message);
+        void onGalleryImageDeleted(String message);
     }
 
     interface Presenter {
         void getGalleryRequest();
         void fabButton();
         GalleryAdapter setUpRecyclerView(RecyclerView rv);
+        Boolean deleteGalleryPicture(String gallery_id);
     }
 }

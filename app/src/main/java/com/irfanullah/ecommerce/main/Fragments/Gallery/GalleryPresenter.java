@@ -22,6 +22,7 @@ public class GalleryPresenter implements GalleryLogic.Presenter {
     private GalleryLogic.View view;
     private Context context;
     ArrayList<Gallery> gallery;
+
     public GalleryPresenter(GalleryLogic.View view, Context context) {
         this.view = view;
         this.context = context;
@@ -29,22 +30,22 @@ public class GalleryPresenter implements GalleryLogic.Presenter {
 
     @Override
     public void getGalleryRequest() {
-        if(Pref.isLoggedIn(context)){
+        if (Pref.isLoggedIn(context)) {
             view.showProgressBar();
             RetroLib.getAPIServices().getGallery(Pref.getUser(context).getTOKEN()).enqueue(new Callback<Gallery>() {
                 @Override
                 public void onResponse(Call<Gallery> call, Response<Gallery> response) {
-                    if(response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         Gallery gallery = response.body();
-                        if(gallery.isError() || !gallery.isAuthenticated()){
+                        if (gallery.isError() || !gallery.isAuthenticated()) {
                             view.onError("Either you are not logged in, or some kind of error occurred. Try again");
-                        }else if(gallery.isFound()){
+                        } else if (gallery.isFound()) {
                             view.hideProgressBar();
-                            view.onGalleryLoaded( gallery.getGALLERY());
-                        }else {
+                            view.onGalleryLoaded(gallery.getGALLERY());
+                        } else {
                             view.onError("Error occurred, please try again");
                         }
-                    }else {
+                    } else {
                         view.hideProgressBar();
                         view.onError(response.message());
                     }
@@ -56,7 +57,7 @@ public class GalleryPresenter implements GalleryLogic.Presenter {
                     view.onError(t.getMessage());
                 }
             });
-        }else {
+        } else {
             view.hideProgressBar();
             view.onError("You are not logged in.");
         }
@@ -71,11 +72,50 @@ public class GalleryPresenter implements GalleryLogic.Presenter {
     public GalleryAdapter setUpRecyclerView(RecyclerView rv) {
 
         gallery = new ArrayList<>();
-        GalleryAdapter galleryAdapter = new GalleryAdapter(context,gallery);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context,2,LinearLayoutManager.VERTICAL,false);
+        GalleryAdapter galleryAdapter = new GalleryAdapter(context, gallery);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(layoutManager);
         rv.setHasFixedSize(true);
         rv.setAdapter(galleryAdapter);
         return galleryAdapter;
     }
+
+    @Override
+    public Boolean deleteGalleryPicture(String gallery_id) {
+        if (Pref.isLoggedIn(context)) {
+            view.showProgressBar();
+            RetroLib.getAPIServices().deleteGalleryPic(Pref.getUser(context).getTOKEN(), gallery_id).enqueue(new Callback<Gallery>() {
+                @Override
+                public void onResponse(Call<Gallery> call, Response<Gallery> response) {
+                    if (response.isSuccessful()) {
+                        Gallery gallery = response.body();
+                        if (gallery.isError() || !gallery.isAuthenticated()) {
+                            view.onError("Either you are not logged in, or some kind of error occurred. Try again");
+                        } else if (gallery.isDeleted()) {
+                            view.hideProgressBar();
+                            view.onGalleryImageDeleted("Image deleted.");
+                        } else {
+                            view.onError(gallery.getMessage());
+                        }
+                    } else {
+                        view.hideProgressBar();
+                        view.onError(response.message());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Gallery> call, Throwable t) {
+                    view.hideProgressBar();
+                    view.onError(t.getMessage());
+                }
+            });
+            return null;
+        }else
+        {
+            view.hideProgressBar();
+            view.onError("You are not logged in.");
+            return null;
+        }
+
+}
 }

@@ -44,11 +44,13 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
 
     @Override
     public void logout() {
-        if(Pref.getSharedPreferenceEditor(context).remove(Pref.PREF_USER_DETAILS).commit()){
-            view.gotoLoginActivit();
-        }else {
-            view.showToast("Unable to Logout. Try again.");
-        }
+        Pref.getSharedPreferenceEditor(context).remove(Pref.PREF_USER_DETAILS).commit();
+        view.gotoLoginActivit();
+
+//        if(){
+//        }else {
+//            view.showToast("Unable to Logout. Try again.");
+//        }
     }
 
     @Override
@@ -67,33 +69,35 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
         context.startActivity(servicesAct);
     }
 
-    public void getCountForChatAndNotificationTabs(final TabLayout tabLayout){
-        RetroLib.getAPIServices().getCountForChatAndNotificationsTab(Pref.getUser(context).getTOKEN()).enqueue(new Callback<Appointment>() {
-            @Override
-            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
-                if(response.isSuccessful()){
-                    Appointment appointment = response.body();
-                    if(appointment.isError()){
+    public void getCountForChatAndNotificationTabs(final TabLayout tabLayout) {
+        if (Pref.isLoggedIn(context)) {
+            RetroLib.getAPIServices().getCountForChatAndNotificationsTab(Pref.getUser(context).getTOKEN()).enqueue(new Callback<Appointment>() {
+                @Override
+                public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+                    if (response.isSuccessful()) {
+                        Appointment appointment = response.body();
+                        if (appointment.isError()) {
 
-                    }else {
-                        if (appointment.getCHAT_COUNT() > 0){
-                            tabLayout.getTabAt(3).setText("Chat ("+Integer.toString(appointment.getCHAT_COUNT())+")");
-                        }
+                        } else {
+                            if (appointment.getCHAT_COUNT() > 0) {
+                                tabLayout.getTabAt(3).setText("Chat (" + Integer.toString(appointment.getCHAT_COUNT()) + ")");
+                            }
 
-                        if(appointment.getAPPOINTMENTS_COUNT() > 0 ){
-                            tabLayout.getTabAt(0).setText("Notifications ("+Integer.toString(appointment.getAPPOINTMENTS_COUNT())+")");
+                            if (appointment.getAPPOINTMENTS_COUNT() > 0) {
+                                tabLayout.getTabAt(0).setText("Notifications (" + Integer.toString(appointment.getAPPOINTMENTS_COUNT()) + ")");
+                            }
                         }
+                    } else {
+                        SC.toastHere(context, "Response error");
                     }
-                }else {
-                    SC.toastHere(context,"Response error");
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Appointment> call, Throwable t) {
+                @Override
+                public void onFailure(Call<Appointment> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
 }

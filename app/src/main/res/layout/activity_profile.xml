@@ -146,13 +146,13 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Shipment duration (in days)"
+                android:text="Opening and closing time"
                 android:textColor="@color/borderColor"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
                 />
 
-            <EditText
+            <Button
                 android:id="@+id/openingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                 android:padding="12dp"
                 android:textColor="@color/blackText" />
 
-            <EditText
+            <Button
                 android:id="@+id/closingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

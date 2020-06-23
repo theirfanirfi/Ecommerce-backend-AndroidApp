@@ -73,7 +73,7 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
     }
 
     public void getParticipants(){
-        SC.toastHere(getContext(),"participants being loaded.");
+//        SC.toastHere(getContext(),"participants being loaded.");
         Log.i("TOKENCHAT",Pref.getUser(context).getTOKEN());
         RetroLib.getAPIServices().getParticipants(Pref.getUser(context).getTOKEN()).enqueue(new Callback<Participants>() {
             @Override
@@ -99,7 +99,7 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
 
             @Override
             public void onFailure(Call<Participants> call, Throwable t) {
-                SC.toastHere(getContext(),t.toString()+" my made error ");
+                SC.toastHere(getContext(),t.toString());
             }
         });
 
