@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
@@ -47,13 +48,16 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
                         view.showError(appointment.getMESSAGE());
                     }
                 }else {
-                    SC.toastHere(context,"response error");
+                    //SC.toastHere(context,"response error");
+                    Log.i("sometag",response.toString());
                 }
             }
 
             @Override
             public void onFailure(Call<Appointment> call, Throwable t) {
-                view.showError(t.getMessage());
+               // view.showError(t.getMessage());
+                Log.i("sometag","Exception: "+t.toString());
+
             }
         });
     }
@@ -92,7 +96,7 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
                         view.showError(appointment.getMESSAGE());
                     }
                 }else {
-                    SC.toastHere(context,"response error");
+                    //SC.toastHere(context,"response error");
                 }
             }
 
@@ -166,7 +170,9 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
 
             @Override
             public void onFailure(Call<Appointment> call, Throwable t) {
-                SC.toastHere(context,t.getMessage());
+                //SC.toastHere(context,t.getMessage());
+                Log.i("sometag","Exception: "+t.toString());
+
 
             }
         });

@@ -93,7 +93,9 @@ public class ChatFragment extends Fragment implements SearchView.OnQueryTextList
 //                    }
 
                 }else {
-                    SC.toastHere(getContext(),"Request error");
+                   // SC.toastHere(getContext(),"Request error");
+                    Log.i("sometag",response.toString());
+
                 }
             }
 

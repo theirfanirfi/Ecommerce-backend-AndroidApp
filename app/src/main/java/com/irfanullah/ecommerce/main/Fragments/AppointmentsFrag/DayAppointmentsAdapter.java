@@ -41,9 +41,9 @@ public class DayAppointmentsAdapter extends RecyclerView.Adapter<DayAppointments
         aptView.username.setText(appointment.getUSERNAME());
         aptView.time_textview.setText(appointment.getTIMERANGE());
 
-        if(!appointment.getPROFILE_IMAGE().isEmpty()){
+//        if(!appointment.getPROFILE_IMAGE().isEmpty()){
             Glib.loadImage(context,appointment.getPROFILE_IMAGE()).into(aptView.profile_image);
-        }
+ //       }
 
         if(Integer.parseInt(appointment.getIS_CONFIRMED()) == 1){
             aptView.confirmBtn.setBackgroundResource(R.drawable.green_circle_check);

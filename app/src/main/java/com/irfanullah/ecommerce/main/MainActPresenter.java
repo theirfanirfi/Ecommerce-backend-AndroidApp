@@ -3,6 +3,7 @@ package com.irfanullah.ecommerce.main;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.util.Log;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
@@ -88,7 +89,8 @@ public class MainActPresenter implements MainActivityLogic.Presenter {
                             }
                         }
                     } else {
-                        SC.toastHere(context, "Response error");
+                        //SC.toastHere(context, "Response error");
+                        Log.i("sometag",response.toString());
                     }
                 }
 

@@ -43,9 +43,9 @@ public class AppointmentsNotificationAdapter extends RecyclerView.Adapter<Appoin
         aptView.date_textview.setText(appointment.getFORMATED_DATE());
        // SC.logHere("Confirmed: "+appointment.getIS_CONFIRMED());
 
-        if(!appointment.getPROFILE_IMAGE().isEmpty()){
+//        if(!appointment.getPROFILE_IMAGE().isEmpty()){
             Glib.loadImage(context,appointment.getPROFILE_IMAGE()).into(aptView.profile_image);
-        }
+       /// }
 
 
         if(Integer.parseInt(appointment.getIS_CONFIRMED()) == 1){
