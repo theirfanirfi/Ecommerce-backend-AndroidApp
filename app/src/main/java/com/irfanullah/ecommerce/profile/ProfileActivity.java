@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,6 +105,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
 
     @Override
     public void onError(String message) {
+        Log.i("internat",message);
         SC.toastHere(context,message);
     }
 

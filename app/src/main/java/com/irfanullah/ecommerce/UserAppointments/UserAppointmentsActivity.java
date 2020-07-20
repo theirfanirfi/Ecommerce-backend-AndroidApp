@@ -70,7 +70,6 @@ public class UserAppointmentsActivity extends AppCompatActivity implements Logic
     @Override
     public void onDeclineClickListener(int position, Appointment apt) {
         presenter.declineAppointment(apt.getAPPT_ID_(),position);
-
     }
 
     @Override

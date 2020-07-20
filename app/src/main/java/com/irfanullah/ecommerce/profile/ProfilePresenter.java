@@ -1,6 +1,7 @@
 package com.irfanullah.ecommerce.profile;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.irfanullah.ecommerce.Libraries.RetroLib;
 import com.irfanullah.ecommerce.Libraries.SC;
@@ -83,7 +84,6 @@ public class ProfilePresenter implements ProfileLogic.Presenter {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     User user = response.body();
-
                     if(user.isError()){
                         view.onError(user.getMESSAGE());
                     }else if(!user.isAuthenticated()){
@@ -95,7 +95,7 @@ public class ProfilePresenter implements ProfileLogic.Presenter {
                         view.onError(user.getMESSAGE());
                     }
                 }else {
-                    view.onError(response.message());
+                    view.onError(response.message().toString());
                 }
             }
 

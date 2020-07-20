@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.irfanullah.ecommerce.Libraries.Glib;
+import com.irfanullah.ecommerce.Libraries.SC;
 import com.irfanullah.ecommerce.Models.Appointment;
 import com.irfanullah.ecommerce.R;
 
@@ -63,7 +64,7 @@ public class UserAppointmentsAdapter extends RecyclerView.Adapter<UserAppointmen
         private TextView time_textview,date_textview;
         private Button confirmBtn, declineBtn;
 
-        public AptView(@NonNull View itemView, Context context, final AppointmentClickListenr apptClickListener, final ArrayList<Appointment> appointments) {
+        public AptView(@NonNull View itemView, final Context context, final AppointmentClickListenr apptClickListener, final ArrayList<Appointment> appointments) {
             super(itemView);
 
             profile_image = itemView.findViewById(R.id.profile_image);
@@ -90,6 +91,7 @@ public class UserAppointmentsAdapter extends RecyclerView.Adapter<UserAppointmen
             declineBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    SC.toastHere(context, "apid: "+appointments.get(getAdapterPosition()).getAPPOINTMENT_ID());
                     apptClickListener.onDeclineClickListener(getAdapterPosition(),appointments.get(getAdapterPosition()));
                 }
             });
