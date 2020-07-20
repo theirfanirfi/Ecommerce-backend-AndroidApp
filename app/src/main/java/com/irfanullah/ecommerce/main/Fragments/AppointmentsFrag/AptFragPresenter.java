@@ -83,7 +83,7 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
                     Appointment appointment = response.body();
                     if(appointment.isAuthenticated()){
                         if(appointment.isError()){
-                            view.showError(appointment.getMESSAGE());
+                            //view.showError(appointment.getMESSAGE());
                         }else if(appointment.isFound()){
 //                            SC.toastHere(context,"found");
                             view.dayAppointmentsLoaded(appointment.getAppointments());
@@ -93,7 +93,7 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
 
                         }
                     }else {
-                        view.showError(appointment.getMESSAGE());
+                        //view.showError(appointment.getMESSAGE());
                     }
                 }else {
                     //SC.toastHere(context,"response error");
@@ -102,7 +102,7 @@ public class AptFragPresenter implements AptFragLogic.Presenter, DayAppointments
 
             @Override
             public void onFailure(Call<Appointment> call, Throwable t) {
-                view.showError(t.getMessage());
+                //view.showError(t.getMessage());
 
             }
         });

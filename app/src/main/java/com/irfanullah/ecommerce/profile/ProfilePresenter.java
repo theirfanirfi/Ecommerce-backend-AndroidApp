@@ -101,7 +101,7 @@ public class ProfilePresenter implements ProfileLogic.Presenter {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                view.onError(t.getMessage());
+                view.onError(t.toString());
             }
         });
     }

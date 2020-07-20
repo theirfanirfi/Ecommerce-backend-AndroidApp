@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileLogic.V
         saveBtn = findViewById(R.id.saveChangesBtn);
         openingHour = findViewById(R.id.openingHour);
         closingHour = findViewById(R.id.closingHour);
-//        service_time = findViewById(R.id.time_diff);
+        service_time = findViewById(R.id.time_diff);
         presenter = new ProfilePresenter(this,context);
         presenter.loadProfile();
 

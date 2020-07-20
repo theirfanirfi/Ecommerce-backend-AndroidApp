@@ -142,6 +142,17 @@
                 android:layout_gravity="center"
                 />
 
+            <EditText
+                android:id="@+id/time_diff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:padding="12dp"
+                android:layout_margin="6dp"
+                android:textColor="@color/blackText"
+
+                android:hint="Service time (e.g 40) "
+                />
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"

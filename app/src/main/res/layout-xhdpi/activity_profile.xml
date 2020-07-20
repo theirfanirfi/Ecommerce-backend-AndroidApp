@@ -17,140 +17,140 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 android:text="Profile Details"
                 android:textColor="@color/borderColor"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Full name:"
-                android:textColor="@color/borderColor"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
-                />
+                android:layout_marginTop="8dp"
+                android:text="Full name:"
+                android:textColor="@color/borderColor" />
 
             <EditText
                 android:id="@+id/fullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blackText"
-                android:background="@drawable/textfieldorangewithwhite"
-                android:padding="12dp"
                 android:layout_margin="6dp"
+                android:background="@drawable/textfieldorangewithwhite"
                 android:hint="Full name"
-                />
+                android:padding="12dp"
+                android:textColor="@color/blackText" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textColor="@color/borderColor"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
-                />
+                android:layout_marginTop="8dp"
+                android:text="Email:"
+                android:textColor="@color/borderColor" />
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="6dp"
                 android:background="@drawable/textfieldorangewithwhite"
-                android:padding="12dp"
-                android:textColor="@color/blackText"
+                android:hint="Email"
 
                 android:inputType="textEmailAddress"
-                android:layout_margin="6dp"
-                android:hint="Email"
-                />
+                android:padding="12dp"
+                android:textColor="@color/blackText" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you don't want to change password, \nleave both the fields empty."
-                android:textColor="@color/whiteColor"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
-                />
+                android:layout_marginTop="8dp"
+                android:text="If you don't want to change password, \nleave both the fields empty."
+                android:textColor="@color/whiteColor" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Password:"
-                android:textColor="@color/borderColor"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
-                />
+                android:layout_marginTop="8dp"
+                android:text="Current Password:"
+                android:textColor="@color/borderColor" />
 
             <EditText
                 android:id="@+id/cpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/textfieldorangewithwhite"
-                android:padding="12dp"
-                android:inputType="textPassword"
                 android:layout_margin="6dp"
-                android:textColor="@color/blackText"
-
+                android:background="@drawable/textfieldorangewithwhite"
                 android:hint="Current Password"
-                />
+                android:inputType="textPassword"
+                android:padding="12dp"
+
+                android:textColor="@color/blackText" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Password:"
-                android:textColor="@color/borderColor"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
-                />
+                android:layout_marginTop="8dp"
+                android:text="New Password:"
+                android:textColor="@color/borderColor" />
 
             <EditText
                 android:id="@+id/npass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/textfieldorangewithwhite"
-                android:padding="12dp"
-                android:inputType="textPassword"
                 android:layout_margin="6dp"
-                android:textColor="@color/blackText"
-
+                android:background="@drawable/textfieldorangewithwhite"
                 android:hint="New Password"
-                />
+                android:inputType="textPassword"
+                android:padding="12dp"
+
+                android:textColor="@color/blackText" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 android:text="Service Settings"
                 android:textColor="@color/borderColor"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center"
-                />
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/time_diff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:background="@drawable/textfieldorangewithwhite"
+                android:hint="Service time (e.g 40) "
+                android:padding="12dp"
+
+                android:textColor="@color/blackText" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Opening and closing time"
-                android:textColor="@color/borderColor"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="12dp"
-                />
+                android:layout_marginTop="8dp"
+                android:text="Opening and closing time"
+                android:textColor="@color/borderColor" />
 
             <Button
                 android:id="@+id/openingHour"
@@ -180,11 +180,10 @@
                 android:id="@+id/saveChangesBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Changes"
-                android:background="@drawable/squareyellowithblacktextbtn"
                 android:layout_margin="12dp"
+                android:background="@drawable/squareyellowithblacktextbtn"
                 android:padding="12dp"
-                />
+                android:text="Save Changes" />
         </LinearLayout>
     </ScrollView>
 
